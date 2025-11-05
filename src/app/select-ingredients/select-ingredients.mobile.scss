@@ -1,0 +1,64 @@
+@use '../../styles/breakpoints' as bp;
+
+@media (max-width: bp.$bp-lg) {
+    section {
+        >.select-ingredients {
+            height: auto;
+            margin-top: 120px;
+            padding: 0 8px;
+
+            >.content {
+                flex-direction: column;
+
+                >form {
+                    margin-bottom: 24px;
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: bp.$bp-xs) {
+    section {
+        .select-ingredients {
+            >h1 {
+                font-size: 32px;
+            }
+
+            >p {
+                font-size: 18px;
+            }
+
+            >.content {
+                width: 100%;
+
+                >form {
+                    width: 100%;
+                    justify-content: space-between;
+
+                    >span {
+                        margin: 2px;
+                    }
+
+                    >button {
+                        margin-top: 26px;
+                    }
+                }
+
+                >div {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    input[type=text] {
+        width: 90px;
+    }
+
+    input[type=number] {
+        width: 50px;
+    }
+
+}

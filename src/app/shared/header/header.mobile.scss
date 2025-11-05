@@ -1,0 +1,9 @@
+@use '../../../styles/breakpoints' as bp;
+
+@media (max-width: bp.$bp-lg) {
+    header {
+        .header {
+            padding: 8px 8px 0 8px;
+        }
+    }
+}

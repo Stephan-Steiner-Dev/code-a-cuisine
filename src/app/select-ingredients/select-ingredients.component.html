@@ -1,0 +1,56 @@
+<section>
+    <div class="select-ingredients">
+        <h1>Generate recipe</h1>
+        <p>Got random stuff in your kitchen? Pop it in-we've got the perfect recept waiting.</p>
+
+        <div class="content">
+            <form (ngSubmit)="addIngredient()">
+                <span>
+                    <label for="ingredients">Ingredient</label>
+                    <input [(ngModel)]="ingredient" id="ingredients" name="ingredients" type="text" required>
+                </span>
+
+                <span>
+                    <label for="amount">Serving</label>
+                    <input [(ngModel)]="amount" id="amount" name="amount" type="number" min="1" required>
+                </span>
+
+                <span class="dropdown" (click)="$event.stopPropagation()">
+                    <label for="dropdown" class="dropdown-label">size</label>
+
+                    <div class="dropdown-selected" (click)="toggleDropdown()">
+                        {{ selectedUnit }}
+                    </div>
+
+                    <ul class="dropdown-options" *ngIf="dropdownOpen" id="dropdown" name="dropdown">
+                        <li (click)="select('gram')">gram</li>
+                        <li (click)="select('ml')">ml</li>
+                        <li (click)="select('piece')">piece</li>
+                    </ul>
+                </span>
+
+                <button type="submit">
+                    <img src="assets/images/select-ingredients/add.png" alt="add">
+                </button>
+            </form>
+
+            <div>
+                <p>List of your Ingredients</p>
+                <ul *ngIf="ingredientList.length > 0">
+                    <li *ngFor="let item of ingredientList; let i = index">
+                        <div class="ingredientData">
+                            {{ item.amount }} {{ item.selectedUnit }} {{ item.ingredient }}
+                        </div>
+                        <div class="ingredientIcons">
+                            <img (click)="editIngredient(i)" src="assets/images/select-ingredients/edit.png" alt="edit">
+                            <img (click)="deleteIngredient(i)" src="assets/images/select-ingredients/delete.png" alt="delete">
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="btn-container">
+            <button (click)="nextStep()" *ngIf="ingredientList.length > 0" class="next-btn">Next step</button>
+        </div>
+    </div>
+</section>

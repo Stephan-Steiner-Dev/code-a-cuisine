@@ -1,0 +1,112 @@
+@use '../../styles/breakpoints' as bp;
+
+@media (max-width: bp.$bp-xxl) {
+    section {
+        .landingpage {
+            >.left-side {
+                >div:nth-child(1) {
+                    >h2 {
+                        font-weight: 600;
+                        font-size: 24px;
+                        margin: 0;
+                    }
+
+                    >h1 {
+                        font-weight: 700;
+                        font-size: 64px;
+                        margin: 0;
+                    }
+
+                    >button {
+                        font-size: 16px;
+                    }
+                }
+
+                >div:nth-child(2) {
+                    >p {
+                        font-size: 24px;
+                    }
+
+                    >a {
+                        font-size: 18px;
+                    }
+                }
+            }
+
+            >.right-side {
+                overflow-x: hidden;
+            }
+        }
+    }
+}
+
+@media (max-width: bp.$bp-xl) {
+    section {
+        .landingpage {
+            >.left-side {
+                >div:nth-child(2) {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: bp.$bp-lg) {
+    section {
+        .landingpage {
+            padding-left: 8px;
+
+            >.left-side {
+                >div:nth-child(2) {
+                    >a {
+                        margin-left: 0;
+
+                        &:hover {
+                            background-color: transparent;
+                        }
+                    }
+                }
+
+                >div:nth-child(1) {
+                    button {
+                        transition: none;
+
+                        &:hover {
+                            transform: none;
+                            background-color: #FAF0E6;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: bp.$bp-md) {
+    section {
+        .landingpage {
+            >.left-side {
+                height: 80vh;
+                justify-content: space-between;
+                margin-top: 96px;
+                box-sizing: border-box;
+            }
+        }
+    }
+}
+
+@media (max-height: 800px) {
+    section {
+        .landingpage {
+            >.left-side {
+                height: 80vh;
+                justify-content: space-between;
+                margin-top: 96px;
+                box-sizing: border-box;
+            }
+        }
+    }
+}

@@ -1,0 +1,98 @@
+section {
+    background-color: #396039;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+
+    >.landingpage {
+        max-width: 1440px;
+        width: 100%;
+        color: white;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        display: flex;
+        align-items: center;
+        box-sizing: border-box;
+        padding-left: 68px;
+
+        >.left-side {
+            height: 80vh;
+            display: flex;
+            justify-content: space-around;
+            flex-direction: column;
+
+            >div:nth-child(1) {
+                >h2 {
+                    font-weight: 600;
+                    font-size: 48px;
+                    margin: 0;
+                }
+
+                >h1 {
+                    font-weight: 700;
+                    font-size: 104px;
+                    margin: 8px 0 24px 0;
+                }
+
+                >button {
+                    background-color: #FAF0E6;
+                    color: #008000;
+                    font-family: 'quicksand';
+                    font-size: 24px;
+                    font-weight: 600;
+                    padding: 16px;
+                    cursor: pointer;
+                    transition: 1s;
+
+                    &:hover {
+                        background-color: #c1c183;
+                        transform: scale(1.05);
+                    }
+                }
+            }
+
+            >div:nth-child(2) {
+                display: flex;
+                align-items: center;
+
+                >p {
+                    color: #FAF0E6;
+                    font-size: 32px;
+                    font-weight: 500;
+                }
+
+                >a {
+                    color: #FAF0E6;
+                    font-family: 'quicksand';
+                    font-size: 20px;
+                    font-weight: 500;
+                    text-decoration: none;
+                    margin-left: 16px;
+                    display: flex;
+                    align-items: center;
+                    box-sizing: border-box;
+                    padding-left: 4px;
+
+                    &:hover {
+                        background-color: #4f7f4f;
+                    }
+
+                    >img {
+                        filter: brightness(0) saturate(100%) invert(99%) sepia(1%) saturate(1146%) hue-rotate(306deg) brightness(111%) contrast(100%);
+                        transform: rotateY(180deg)
+                    }
+                }
+            }
+        }
+
+        >.right-side {
+            height: 100vh;
+            overflow: hidden;
+
+            >img {
+                height: 100%;
+            }
+        }
+    }
+}

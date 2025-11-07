@@ -1,8 +1,11 @@
 <section class="page-frame">
-    <div class="top-left-action">
-        <button>button</button>
-
-
+    <div class="center-div">
+        <div>
+            <button class="back-btn" (click)="back()">
+                <img src="assets/images/preferences/arrow.png" alt="back">
+                <p>Ingredients</p>
+            </button>
+        </div>
         <main class="main-content">
             <h1 class="hero-card">
                 Choose your preferences
@@ -23,7 +26,7 @@
                     <h3>How many are cooking?</h3>
                     <div class="amount-fields">
                         <img (click)="minus('persons')" src="assets/images/preferences/minus.png" alt="-">
-                        <input [(ngModel)]="persons" type="number" id="persons">
+                        <input [(ngModel)]="persons" type="number" id="persons" min="1">
                         <label *ngIf="persons < 2" for="persons">person</label>
                         <label *ngIf="persons >= 2" for="persons">persons</label>
                         <img (click)="plus('persons')" src="assets/images/preferences/plus.png" alt="+">
@@ -32,35 +35,18 @@
             </section>
 
             <section class="section-card">
-                <div class="section-row">
-                    <div>img / h2</div>
-                    <div class="row-buttons">
-                        <button>button</button>
-                        <button>button</button>
-                        <button>button</button>
+                <div *ngFor="let item of dataService.preferenceData.sections" class="section-row">
+                    <div><img src="{{item.image}}" alt="icon">
+                        <p>{{item.headline}}</p>
                     </div>
-                </div>
-
-                <div class="section-row">
-                    <div>img / h2</div>
                     <div class="row-buttons">
-                        <button>button</button>
-                        <button>button</button>
-                        <button>button</button>
-                    </div>
-                </div>
-
-                <div class="section-row">
-                    <div>img / h2</div>
-                    <div class="row-buttons">
-                        <button>button</button>
-                        <button>button</button>
-                        <button>button</button>
+                        <input *ngFor="let item of dataService.preferenceData[item.key]" type="button" [value]="item"
+                            [class.active]="isSelected(selectedCookingTimes, item)"
+                            (click)="toggleSelection(selectedCookingTimes, item)">
                     </div>
                 </div>
             </section>
+            <app-button class="generate-btn" (click)="generateRecipe()" text="Generate a recipe"></app-button>
         </main>
-
-        <app-button text="Generate a recipe"></app-button>
     </div>
 </section>

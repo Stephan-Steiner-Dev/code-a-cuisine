@@ -1,0 +1,66 @@
+<section class="page-frame">
+    <div class="top-left-action">
+        <button>button</button>
+
+
+        <main class="main-content">
+            <h1 class="hero-card">
+                Choose your preferences
+            </h1>
+
+            <section class="two-column">
+                <div class="info-card">
+                    <h3>How many portions you need?</h3>
+                    <div class="amount-fields">
+                        <img (click)="minus('portions')" src="assets/images/preferences/minus.png" alt="-">
+                        <input [(ngModel)]="portions" type="number" id="portions">
+                        <label *ngIf="portions < 2" for="portions">portion</label>
+                        <label *ngIf="portions >= 2" for="portions">portions</label>
+                        <img (click)="plus('portions')" src="assets/images/preferences/plus.png" alt="+">
+                    </div>
+                </div>
+                <div class="info-card">
+                    <h3>How many are cooking?</h3>
+                    <div class="amount-fields">
+                        <img (click)="minus('persons')" src="assets/images/preferences/minus.png" alt="-">
+                        <input [(ngModel)]="persons" type="number" id="persons">
+                        <label *ngIf="persons < 2" for="persons">person</label>
+                        <label *ngIf="persons >= 2" for="persons">persons</label>
+                        <img (click)="plus('persons')" src="assets/images/preferences/plus.png" alt="+">
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-card">
+                <div class="section-row">
+                    <div>img / h2</div>
+                    <div class="row-buttons">
+                        <button>button</button>
+                        <button>button</button>
+                        <button>button</button>
+                    </div>
+                </div>
+
+                <div class="section-row">
+                    <div>img / h2</div>
+                    <div class="row-buttons">
+                        <button>button</button>
+                        <button>button</button>
+                        <button>button</button>
+                    </div>
+                </div>
+
+                <div class="section-row">
+                    <div>img / h2</div>
+                    <div class="row-buttons">
+                        <button>button</button>
+                        <button>button</button>
+                        <button>button</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <app-button text="Generate a recipe"></app-button>
+    </div>
+</section>

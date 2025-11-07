@@ -1,0 +1,16 @@
+    .btn {
+        font-size: 24px;
+        font-family: 'quicksand';
+        font-size: 600;
+        padding: 16px 26px;
+        box-sizing: border-box;
+        background-color: #396039;
+        color: white;
+        border: none;
+        cursor: pointer;
+
+        &:hover {
+            transition: ease-in-out 0.5s;
+            background-color: #3e783e;
+        }
+    }

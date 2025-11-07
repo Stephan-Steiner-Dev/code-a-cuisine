@@ -1,13 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { Component, HostListener } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-// 🆕 NEU: Service + Interface importieren
 import { IngredientService, Ingredient } from '../shared/service/ingredient.service';
+import { ButtonComponent } from '../shared/button/button.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-select-ingredients',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, ButtonComponent],
   templateUrl: './select-ingredients.component.html',
   styleUrls: ['./select-ingredients.component.scss', './select-ingredients.mobile.scss']
 })
@@ -19,12 +20,12 @@ export class SelectIngredientsComponent {
   selectedUnit: string = '';
   dropdownOpen: boolean = false;
 
-  constructor(private ingredientService: IngredientService) {
+  constructor(private ingredientService: IngredientService, private router: Router) {
     this.ingredientList = this.ingredientService.getIngredients();
   }
 
   nextStep() {
-    // leer wie vorher – hier kannst du später weitermachen
+     this.router.navigate(['/preferences']);
   }
 
   deleteIngredient(i: number) {

@@ -50,7 +50,7 @@
             </div>
         </div>
         <div class="btn-container">
-            <button (click)="nextStep()" *ngIf="ingredientList.length > 0" class="next-btn">Next step</button>
+            <app-button text="Next Step" *ngIf="ingredientList.length > 0" (click)="nextStep()" class="next-btn"></app-button>
         </div>
     </div>
 </section>

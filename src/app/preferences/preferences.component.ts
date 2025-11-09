@@ -16,49 +16,62 @@ export class PreferencesComponent {
   selectedCookingTimes: string[] = [];
   selectedCuisines: string[] = [];
   selectedDiets: string[] = [];
-
-  constructor(private router: Router, public dataService: DataService) {}
-
+  arrayName: string = '';
   portions: number = 2;
   persons: number = 1;
 
-  generateRecipe() {
+  constructor(private router: Router, public dataService: DataService) { }
+
+toggleSelection(target: string, value: string): void {
+  const array = (this as any)[target] as string[];
+  if (!array) return;
+  const index = array.indexOf(value);
+  if (index === -1) {
+    array.push(value);
+  } else {
+    array.splice(index, 1);
+  }
+}
+
+
+  isSelected(target: string, value: string): boolean {
+    const array = (this as any)[target] as string[];
+    console.log(array);
     
-  }
+    if (!array) return false;
 
-  toggleSelection(array: string[], value: string) {
-    const index = array.indexOf(value);
-    if (index === -1) {
-      array.push(value);
-    } else {
-      array.splice(index, 1);
-    }
-  }
-
-  isSelected(array: string[], value: string): boolean {
     return array.includes(value);
   }
 
+
   submitPreferences() {
+    this.router.navigate(['/loading-page'])
     console.log({
       cookingTime: this.selectedCookingTimes,
       cuisine: this.selectedCuisines,
       diet: this.selectedDiets
     });
+    this.resetArrays()
   }
 
-  minus(unit:string) {
-    if(unit === 'portions'){
+  resetArrays(){
+  this.selectedCookingTimes = [];
+  this.selectedCuisines = [];
+  this.selectedDiets = [];
+  }
+
+  minus(unit: string) {
+    if (unit === 'portions') {
       this.portions--
-    } else if (unit === 'persons'){
+    } else if (unit === 'persons') {
       this.persons--
     }
   }
 
-  plus(unit:string) {
-        if(unit === 'portions'){
+  plus(unit: string) {
+    if (unit === 'portions') {
       this.portions++
-    } else if (unit === 'persons'){
+    } else if (unit === 'persons') {
       this.persons++
     }
   }

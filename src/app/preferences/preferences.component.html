@@ -40,13 +40,12 @@
                         <p>{{item.headline}}</p>
                     </div>
                     <div class="row-buttons">
-                        <input *ngFor="let item of dataService.preferenceData[item.key]" type="button" [value]="item"
-                            [class.active]="isSelected(selectedCookingTimes, item)"
-                            (click)="toggleSelection(selectedCookingTimes, item)">
+                        <input *ngFor="let i of dataService.preferenceData[item.key]" type="button" [value]="i"
+                            [class.active]="isSelected(item.target, i)" (click)="toggleSelection(item.target, i)">
                     </div>
                 </div>
             </section>
-            <app-button class="generate-btn" (click)="generateRecipe()" text="Generate a recipe"></app-button>
+            <app-button class="generate-btn" (click)="submitPreferences()" text="Generate a recipe"></app-button>
         </main>
     </div>
 </section>

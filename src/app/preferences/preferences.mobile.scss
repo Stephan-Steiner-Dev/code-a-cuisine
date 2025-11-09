@@ -1,0 +1,47 @@
+@use '../../styles/breakpoints' as bp;
+
+@media (max-width: bp.$bp-lg) {
+    .center-div {
+        padding: 16px;
+    }
+}
+
+@media (max-width: bp.$bp-sm) {
+    .two-column {
+        flex-direction: column;
+    }
+
+    .center-div {
+        margin-top: 80px;
+    }
+
+    .hero-card {
+        text-align: start;
+        font-size: 24px;
+    }
+
+    h3 {
+        font-size: 16px;
+        font-weight: 500;
+        margin: 8px 0;
+    }
+
+    .amount-fields {
+        >label {
+            font-size: 16px;
+        }
+    }
+
+    .two-column {
+        margin-bottom: 12px;
+    }
+
+    .section-row {
+        >div:nth-child(1) {
+            >img {
+                width: 20px;
+                height: 20px;
+            }
+        }
+    }
+}

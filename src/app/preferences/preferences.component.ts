@@ -10,7 +10,7 @@ import { DataService } from '../shared/service/data.service';
   standalone: true,
   imports: [CommonModule, FormsModule, ButtonComponent],
   templateUrl: './preferences.component.html',
-  styleUrl: './preferences.component.scss'
+  styleUrls: ['./preferences.component.scss', './preferences.mobile.scss']
 })
 export class PreferencesComponent {
   selectedCookingTimes: string[] = [];

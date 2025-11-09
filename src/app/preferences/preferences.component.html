@@ -17,8 +17,8 @@
                     <div class="amount-fields">
                         <img (click)="minus('portions')" src="assets/images/preferences/minus.png" alt="-">
                         <input [(ngModel)]="portions" type="number" id="portions">
-                        <label *ngIf="portions < 2" for="portions">portion</label>
-                        <label *ngIf="portions >= 2" for="portions">portions</label>
+                        <label *ngIf="portions < 2" for="portions">Portion</label>
+                        <label *ngIf="portions >= 2" for="portions">Portions</label>
                         <img (click)="plus('portions')" src="assets/images/preferences/plus.png" alt="+">
                     </div>
                 </div>
@@ -27,8 +27,8 @@
                     <div class="amount-fields">
                         <img (click)="minus('persons')" src="assets/images/preferences/minus.png" alt="-">
                         <input [(ngModel)]="persons" type="number" id="persons" min="1">
-                        <label *ngIf="persons < 2" for="persons">person</label>
-                        <label *ngIf="persons >= 2" for="persons">persons</label>
+                        <label *ngIf="persons < 2" for="persons">Person</label>
+                        <label *ngIf="persons >= 2" for="persons">Persons</label>
                         <img (click)="plus('persons')" src="assets/images/preferences/plus.png" alt="+">
                     </div>
                 </div>

@@ -8,6 +8,8 @@
 .center-div {
     margin-top: 150px;
     width: 100%;
+    max-width: 1440px;
+    box-sizing: border-box;
     padding: 0 68px;
     display: flex;
     flex-direction: column;

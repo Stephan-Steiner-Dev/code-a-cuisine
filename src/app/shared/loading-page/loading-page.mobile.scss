@@ -1,0 +1,8 @@
+@use '../../../styles/breakpoints' as bp;
+
+@media (max-width: bp.$bp-sm) {
+    .loading-text {
+        width: 295px;
+        font-size: 44px;
+    }
+}

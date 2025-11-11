@@ -12,7 +12,7 @@ import { HeaderComponent } from "./shared/header/header.component";
 })
 export class AppComponent {
   title = 'code-a-cuisine';
-  whiteBgRoutes = ['/select-ingredients', '/preferences', '/loading-page'];
+  whiteBgRoutes = ['/select-ingredients', '/preferences'];
 
    constructor(public router: Router) {}
 

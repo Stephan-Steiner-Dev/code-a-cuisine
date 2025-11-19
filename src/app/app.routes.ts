@@ -4,6 +4,7 @@ import { HeaderComponent } from './shared/header/header.component';
 import { SelectIngredientsComponent } from './select-ingredients/select-ingredients.component';
 import { PreferencesComponent } from './preferences/preferences.component';
 import { LoadingPageComponent } from './shared/loading-page/loading-page.component';
+import { RecipesComponent } from './recipes/recipes.component';
 
 export const routes: Routes = [
     { path: '', component: LandingpageComponent },
@@ -11,6 +12,7 @@ export const routes: Routes = [
     { path: 'header', component: HeaderComponent },
     { path: 'select-ingredients', component: SelectIngredientsComponent },
     { path: 'preferences', component: PreferencesComponent },
-    { path: 'loading-page', component: LoadingPageComponent }
+    { path: 'loading-page', component: LoadingPageComponent },
+    { path: 'recipes', component: RecipesComponent }
 
 ];

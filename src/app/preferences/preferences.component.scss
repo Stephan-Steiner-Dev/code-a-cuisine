@@ -89,13 +89,13 @@
     cursor: pointer;
 
     &:hover {
-        transform: scale(1.01);
+        transform: scale(1.03);
         transition: 0.3s ease-in-out;
     }
 
     >img {
         width: 25px;
-        height: 20px;
+        height: 17px;
         margin-right: 12px;
     }
 }

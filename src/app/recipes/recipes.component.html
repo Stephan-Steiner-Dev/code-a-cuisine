@@ -1,0 +1,15 @@
+<section class="recipes">
+    <main>
+        <div class="upper-half">
+            <h1></h1>
+            <p></p>
+            <div></div>
+            <img src="" alt="">
+        </div>
+        <div class="lower-half">
+            <div *ngFor="let item of ingredientService.recipes">
+                <p *ngFor="let i of item.ingredients">{{ i }}</p>
+            </div>
+        </div>
+    </main>
+</section>

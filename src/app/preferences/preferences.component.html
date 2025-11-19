@@ -16,7 +16,7 @@
                     <h3>How many portions you need?</h3>
                     <div class="amount-fields">
                         <img (click)="minus('portions')" src="assets/images/preferences/minus.png" alt="-">
-                        <input [(ngModel)]="portions" type="number" id="portions">
+                        <input [(ngModel)]="portions" type="number" id="portions" min="1">
                         <label *ngIf="portions < 2" for="portions">Portion</label>
                         <label *ngIf="portions >= 2" for="portions">Portions</label>
                         <img (click)="plus('portions')" src="assets/images/preferences/plus.png" alt="+">

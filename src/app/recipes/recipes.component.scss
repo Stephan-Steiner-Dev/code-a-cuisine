@@ -1,0 +1,18 @@
+.recipes {
+    background-color: #396039;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+
+    >main {
+        max-width: 1440px;
+
+        >.lower-half {
+            height: 400px;
+            width: 400px;
+            background-color: aliceblue;
+        }
+    }
+
+    
+}

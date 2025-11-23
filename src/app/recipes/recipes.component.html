@@ -1,15 +1,27 @@
 <section class="recipes">
     <main>
         <div class="upper-half">
-            <h1></h1>
-            <p></p>
-            <div></div>
-            <img src="" alt="">
-        </div>
-        <div class="lower-half">
-            <div *ngFor="let item of ingredientService.recipes">
-                <p *ngFor="let i of item.ingredients">{{ i }}</p>
+            <div class="text">
+                <h1>{{ dataService.recipeResults.title }}</h1>
+                <p>{{ dataService.recipeResults.description }}</p>
             </div>
+
+            <img class="recipe-image" [src]="dataService.recipeResults.image" alt="cooking image">
+        </div>
+
+        <div class="lower-half">
+            <div *ngFor="let item of ingredientService.recipes; let i = index">
+                <div>
+                    <img class="recipe-icon" src="assets/shared-icons/haube.png" alt="icon">
+                    <h3>Recipe {{i + 1}}</h3>
+                </div>
+                <h2>{{item.title}}</h2>
+                <p>Cooking Time:</p>
+                <app-button class="btn" [text]="'View'" [color]="'#008000'" [backgroundColor]="'#faf0e6'" [hoverColor]="'#ffe397'"></app-button>
+            </div>
+        </div>
+        <div  class="new-recipe">
+            <button (click)="navigateToIngredients()">Generate new recipe<img class="arrow-icon" src="assets/images/preferences/arrow.png" alt="arrow"></button>
         </div>
     </main>
 </section>

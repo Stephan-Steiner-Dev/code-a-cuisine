@@ -9,7 +9,11 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./button.component.scss']
 })
 export class ButtonComponent {
-  @Input() text: string = 'Klick mich';   // Text auf dem Button
-  @Input() color: string = 'transparent';     // Optional: für Styles
-  @Input() disabled: boolean = false;     // Optional: deaktiviert
+  @Input() text: string = 'Klick mich';
+  @Input() color: string = '';
+  @Input() backgroundColor: string = '';
+  @Input() disabled: boolean = false;
+  @Input() hoverColor: string = '';
+  @Input() fontSize: string = '';
+  @Input() fontWeight: string = '';
 }

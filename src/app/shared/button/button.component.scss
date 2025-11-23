@@ -1,16 +1,23 @@
     .btn {
         font-size: 24px;
         font-family: 'quicksand';
-        font-size: 600;
+        font-weight: 600;
         padding: 16px 26px;
         box-sizing: border-box;
-        background-color: #396039;
+        background-color: var(--btn-bg, #396039);
         color: white;
         border: none;
         cursor: pointer;
+        transition: background-color 0.2s ease;
 
         &:hover {
             transition: ease-in-out 0.5s;
-            background-color: #3e783e;
+            background-color: var(--btn-hover-bg, #2f4f2f);
+            transform: scale(1.01);
+        }
+
+        &:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
         }
     }

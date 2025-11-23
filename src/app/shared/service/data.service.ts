@@ -29,5 +29,16 @@ export class DataService {
       cuisine: ['German', 'Italian', 'Oriental', 'Japanese', 'Anti-inflammatory', 'Fusion'],
       dietPreferences: ['Vegetarian', 'Vegan', 'Keto', 'No preferences']
     };
+
+  recipeResults: {
+    title: string,
+    image: string,
+    description: string,
+
+  } = {
+      title: 'The recipe results',
+      image: '/assets/images/recipe/recipe-image.png',
+      description: 'We took what you have and let our AI do the thinking. Here are 3 easy recipes you can make right now!'
+    }
 }
 

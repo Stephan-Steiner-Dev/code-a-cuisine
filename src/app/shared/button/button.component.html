@@ -1,7 +1,4 @@
-<button
-class="btn"
-  [ngClass]="color"
-  [disabled]="disabled"
->
+<button [style.--btn-bg]="backgroundColor" [style.--btn-hover-bg]="hoverColor || backgroundColor" class="btn"
+  [ngClass]="color" [disabled]="disabled" [style.color]="color">
   {{ text }}
 </button>

@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet, Router } from '@angular/router';
-import { HeaderComponent } from "./shared/header/header.component";
+import { Router, RouterOutlet } from '@angular/router';
+import { HeaderComponent } from './shared/header/header.component';
 
 @Component({
-  selector: 'app-root',
   standalone: true,
+  selector: 'app-root',
   imports: [CommonModule, RouterOutlet, HeaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
@@ -13,10 +13,9 @@ import { HeaderComponent } from "./shared/header/header.component";
 export class AppComponent {
   title = 'code-a-cuisine';
   whiteBgRoutes = ['/select-ingredients', '/preferences'];
+  private router = inject(Router)
 
-   constructor(public router: Router) {}
-
-    isWhiteBgRoute(): boolean {
+  isWhiteBgRoute(): boolean {
     return this.whiteBgRoutes.includes(this.router.url);
   }
 }

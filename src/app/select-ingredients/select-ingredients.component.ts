@@ -1,16 +1,16 @@
 import { CommonModule } from '@angular/common';
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { IngredientService, Ingredient } from '../shared/service/ingredient.service';
 import { ButtonComponent } from '../shared/button/button.component';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-select-ingredients',
-  standalone: true,
-  imports: [CommonModule, FormsModule, ButtonComponent],
-  templateUrl: './select-ingredients.component.html',
-  styleUrls: ['./select-ingredients.component.scss', './select-ingredients.mobile.scss']
+    standalone: true,
+    selector: 'app-select-ingredients',
+    imports: [CommonModule, FormsModule, ButtonComponent, RouterModule],
+    templateUrl: './select-ingredients.component.html',
+    styleUrls: ['./select-ingredients.component.scss', './select-ingredients.mobile.scss']
 })
 export class SelectIngredientsComponent {
 
@@ -19,8 +19,10 @@ export class SelectIngredientsComponent {
   amount: number | null = null;
   selectedUnit: string = '';
   dropdownOpen: boolean = false;
+  private router = inject(Router);
+  private ingredientService = inject(IngredientService);
 
-  constructor(private ingredientService: IngredientService, private router: Router) {
+  constructor() {
     this.ingredientList = this.ingredientService.getIngredients();
   }
 

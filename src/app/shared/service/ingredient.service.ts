@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
@@ -28,10 +28,8 @@ export interface Recipe {
 
 export class IngredientService {
 
-  constructor(
-    private http: HttpClient,
-    private router: Router
-  ) { }
+    private http = inject(HttpClient)
+    private router= inject(Router)
 
   private webhookUrl = '/webhook-test/ingredient';
   public ingredientList: Ingredient[] = [];

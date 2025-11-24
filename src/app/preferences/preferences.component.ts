@@ -1,5 +1,5 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { CommonModule } from "@angular/common";
+import { Component, inject } from '@angular/core';
 import { FormsModule } from "@angular/forms";
 import { ButtonComponent } from '../shared/button/button.component';
 import { Router } from '@angular/router';
@@ -7,11 +7,11 @@ import { DataService } from '../shared/service/data.service';
 import { IngredientService } from '../shared/service/ingredient.service';
 
 @Component({
-  selector: 'app-preferences',
-  standalone: true,
-  imports: [CommonModule, FormsModule, ButtonComponent],
-  templateUrl: './preferences.component.html',
-  styleUrls: ['./preferences.component.scss', './preferences.mobile.scss']
+    standalone: true,
+    selector: 'app-preferences',
+    imports: [CommonModule, FormsModule, ButtonComponent],
+    templateUrl: './preferences.component.html',
+    styleUrls: ['./preferences.component.scss', './preferences.mobile.scss']
 })
 
 export class PreferencesComponent {
@@ -21,8 +21,10 @@ export class PreferencesComponent {
   arrayName: string = '';
   portions: number = 2;
   persons: number = 1;
+  private router = inject(Router);
+  public dataService = inject(DataService)
+  public ingredientService = inject(IngredientService)
 
-  constructor(private router: Router, public dataService: DataService, public ingredientService: IngredientService) { }
 
   toggleSelection(target: string, value: string): void {
     const array = (this as any)[target] as string[];
@@ -34,6 +36,7 @@ export class PreferencesComponent {
       array.splice(index, 1);
     }
   }
+
 
   isSelected(target: string, value: string): boolean {
     const array = (this as any)[target] as string[];
@@ -58,6 +61,7 @@ export class PreferencesComponent {
     this.router.navigate(['/loading-page'])
   }
 
+
   resetArrays() {
     this.selectedCookingTimes = [];
     this.selectedCuisines = [];
@@ -65,6 +69,7 @@ export class PreferencesComponent {
     this.portions = 2;
     this.persons = 1;
   }
+
 
   minus(unit: string) {
     if (unit === 'portions') {
@@ -74,6 +79,7 @@ export class PreferencesComponent {
     }
   }
 
+
   plus(unit: string) {
     if (unit === 'portions') {
       this.portions++
@@ -82,6 +88,7 @@ export class PreferencesComponent {
     }
   }
 
+  
   back() {
     this.router.navigate(['/select-ingredients'])
   }

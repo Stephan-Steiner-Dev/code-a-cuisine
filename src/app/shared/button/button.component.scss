@@ -1,3 +1,5 @@
+    @use "../../../styles/breakpoints" as bp;
+
     .btn {
         font-size: 24px;
         font-family: 'quicksand';
@@ -19,5 +21,16 @@
         &:disabled {
             opacity: 0.6;
             cursor: not-allowed;
+        }
+    }
+
+    @media(max-width: bp.$bp-lg) {
+        .btn {
+            font-size: 18px;
+
+            &:hover {
+                transition: none;
+                transform: none;
+            }
         }
     }

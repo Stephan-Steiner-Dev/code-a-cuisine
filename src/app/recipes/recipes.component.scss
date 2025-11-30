@@ -20,21 +20,35 @@
             gap: 20px;
             align-items: center;
 
+            // 
+            grid-template-areas:
+                "text image"
+                "desc  image";
+            // 
+
+
+
             >.text {
                 color: white;
+                grid-template-areas:
+                    "title"
+                    "desc";
 
                 >p {
+                    grid-area: desc;
                     font-size: 24px;
                 }
 
                 >h1 {
+                      grid-area: title;
                     font-size: 54px;
                 }
             }
 
             >.recipe-image {
+                grid-area: image;
                 width: 100%;
-                height: 200px;
+                aspect-ratio: 16/6;
                 border-radius: 10px;
                 justify-self: end;
             }

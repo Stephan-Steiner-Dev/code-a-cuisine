@@ -17,9 +17,17 @@ export interface Preferences {
 }
 
 export interface Recipe {
+  // title: string;
+  // ingredients: string[];
+  // steps: string[];
   title: string;
-  ingredients: string[];
+  nutritionalInformations: string[];
+  myIngredients: string[];
+  extraIngredients: string[];
   steps: string[];
+  cookingtime: string;
+  cuisine: string[];
+  persons: number
 }
 
 @Injectable({
@@ -34,7 +42,7 @@ export class IngredientService {
   private webhookUrl = '/webhook-test/ingredient';
   public ingredientList: Ingredient[] = [];
   public preferenceList: Preferences[] = [];
-
+  public currentRecipe: number = 0;
 
 
 
@@ -43,63 +51,111 @@ export class IngredientService {
 
   public recipes: Recipe[] = [
   {
-    "title": "Pasta Cremosa al Formaggio",
-    "ingredients": [
-      "200 g Pasta (z.B. Spaghetti oder Penne)",
-      "200 ml Schlagsahne (mind. 30% Fett)",
-      "100 g geriebener Käse (z.B. Parmesan, Gouda oder Emmentaler)",
-      "Salz",
-      "frisch gemahlener schwarzer Pfeffer"
+    "title": "Pasta al Pomodoro e Burro (Tomato Butter Pasta)",
+    "nutritionalInformations": [
+      "Energy: 1530 kcal",
+      "Protein: 36 g",
+      "Fat: 88 g",
+      "Carbs: 148 g"
+    ],
+    "myIngredients": [
+      "200 gram pasta",
+      "100 gram Butter",
+      "2 piece tomatoes"
+    ],
+    "extraIngredients": [
+      "2 cloves garlic",
+      "50 gram Parmesan cheese",
+      "Fresh basil"
     ],
     "steps": [
-      "Einen großen Topf mit Salzwasser zum Kochen bringen. Die Pasta nach Packungsanleitung al dente kochen. Vor dem Abgießen etwa 150 ml Nudelkochwasser entnehmen und beiseite stellen.",
-      "Während die Pasta kocht, in einer großen Pfanne oder einem weiten Topf die Schlagsahne bei mittlerer Hitze erwärmen, aber nicht kochen lassen.",
-      "Den geriebenen Käse portionsweise unter ständigem Rühren in die warme Sahne geben. Jede Portion vollständig schmelzen lassen, bevor die nächste hinzugefügt wird, um eine klumpenfreie, cremige Sauce zu erhalten.",
-      "Sollte die Sauce zu dick werden, löffelweise etwas Nudelkochwasser hinzufügen, bis die gewünschte Konsistenz erreicht ist. Mit Salz und reichlich frisch gemahlenem Pfeffer abschmecken.",
-      "Die abgegossene Pasta direkt in die Pfanne zur Käse-Sahne-Sauce geben und gut vermengen, sodass jede Nudel vollständig überzogen ist. Bei Bedarf noch etwas Nudelwasser hinzufügen.",
-      "Sofort servieren, eventuell mit zusätzlichem Pfeffer bestreut."
-    ]
+      "Cook pasta according to package instructions until al dente. Reserve about 1 cup of pasta water before draining.",
+      "While pasta cooks, finely chop the garlic and dice the tomatoes.",
+      "In a large pan, melt half of the butter over medium heat. Add garlic and cook until fragrant (about 1 minute).",
+      "Add diced tomatoes to the pan and cook for 5-7 minutes, stirring occasionally, until they start to break down and form a sauce.",
+      "Add the drained pasta to the pan with the tomato sauce. Add the remaining butter and about 1/2 cup of reserved pasta water.",
+      "Toss continuously until the butter has melted and emulsified with the pasta water to create a creamy sauce that coats the pasta. Add more pasta water if needed to reach desired consistency.",
+      "Stir in grated Parmesan cheese and fresh basil. Serve immediately."
+    ],
+    "cookingtime": "20 mins",
+    "cuisine": [
+      "German",
+      "Italian",
+      "No preferences"
+    ],
+    "persons": 2
   },
   {
-    "title": "Überbackene Käse-Sahne Pasta",
-    "ingredients": [
-      "200 g Pasta (z.B. Maccheroni oder Fusilli)",
-      "200 ml Schlagsahne (mind. 30% Fett)",
-      "100 g geriebener Käse (z.B. Emmentaler oder Gouda)",
-      "1/2 Teelöffel Salz",
-      "1/4 Teelöffel frisch gemahlener schwarzer Pfeffer",
-      "Prise Muskatnuss (optional)"
+    "title": "Buttered Noodles with Roasted Tomatoes and Herbs",
+    "nutritionalInformations": [
+      "Energy: 1550 kcal",
+      "Protein: 32 g",
+      "Fat: 84 g",
+      "Carbs: 168 g"
+    ],
+    "myIngredients": [
+      "200 gram pasta",
+      "100 gram Butter",
+      "2 piece tomatoes"
+    ],
+    "extraIngredients": [
+      "1 small onion",
+      "Fresh chives",
+      "2 tablespoons breadcrumbs"
     ],
     "steps": [
-      "Den Backofen auf 200°C Ober-/Unterhitze vorheizen. Eine Auflaufform (ca. 20x15 cm) leicht einfetten.",
-      "Einen großen Topf mit Salzwasser zum Kochen bringen. Die Pasta etwa 2-3 Minuten kürzer als auf der Packung angegeben kochen (al dente minus). Abgießen und beiseitestellen.",
-      "In einer großen Schüssel die gekochte Pasta mit der Schlagsahne, 70 g des geriebenen Käses, Salz, Pfeffer und der optionalen Muskatnuss vermischen.",
-      "Die Pasta-Mischung gleichmäßig in die vorbereitete Auflaufform geben.",
-      "Den restlichen geriebenen Käse (30 g) gleichmäßig über die Pasta streuen.",
-      "Die Auflaufform für 15-20 Minuten in den vorgeheizten Ofen stellen, oder bis der Käse goldbraun ist und die Sauce blubbernd heiß ist.",
-      "Vor dem Servieren 5 Minuten ruhen lassen."
-    ]
+      "Preheat oven to 200°C (390°F). Halve the tomatoes, drizzle with a little olive oil (not included in ingredients but common), salt, and pepper, then roast for 15-20 minutes until slightly softened and caramelized.",
+      "Meanwhile, cook pasta according to package instructions until al dente. Drain well.",
+      "Finely chop the onion and fresh chives.",
+      "In a large pan, melt most of the butter over medium heat. Add the chopped onion and cook until translucent (about 3-5 minutes).",
+      "Add the drained pasta to the pan with the melted butter and onions. Toss well to coat the noodles evenly.",
+      "In a separate small pan, melt the remaining butter. Add breadcrumbs and toast until golden brown and crispy.",
+      "Serve the buttered noodles topped with the roasted tomatoes, toasted breadcrumbs, and fresh chives."
+    ],
+    "cookingtime": "25 mins",
+    "cuisine": [
+      "German",
+      "Italian",
+      "No preferences"
+    ],
+    "persons": 3
   },
   {
-    "title": "Pasta all'Emulsione di Formaggio",
-    "ingredients": [
-      "200 g Pasta (z.B. Bucatini oder Spaghetti)",
-      "200 ml Schlagsahne (mind. 30% Fett)",
-      "100 g frisch geriebener Käse (vorzugsweise Pecorino Romano oder reifer Parmesan)",
-      "reichlich frisch gemahlener schwarzer Pfeffer",
-      "50-100 ml Nudelkochwasser",
-      "eine Prise Salz (vorsichtig, da Käse salzig ist)"
+    "title": "Lemon Herb Butter Pasta with Fresh Tomatoes",
+    "nutritionalInformations": [
+      "Energy: 1450 kcal",
+      "Protein: 29 g",
+      "Fat: 83 g",
+      "Carbs: 148 g"
+    ],
+    "myIngredients": [
+      "200 gram pasta",
+      "100 gram Butter",
+      "2 piece tomatoes"
+    ],
+    "extraIngredients": [
+      "Lemon zest",
+      "Fresh parsley",
+      "Pinch of chili flakes"
     ],
     "steps": [
-      "Einen großen Topf mit Salzwasser zum Kochen bringen. Die Pasta nach Packungsanleitung al dente kochen. Kurz vor Ende der Kochzeit etwa 150 ml Nudelkochwasser entnehmen und beiseite stellen.",
-      "In einer großen, tiefen Pfanne oder einem Wok bei niedriger bis mittlerer Hitze die Schlagsahne erwärmen. Den reichlich gemahlenen schwarzen Pfeffer hinzufügen und kurz anrösten, bis er duftet (nicht braun werden lassen).",
-      "Die abgegossene Pasta (nicht zu trocken) direkt in die Pfanne zur Sahne geben. Sofort den geriebenen Käse hinzufügen und mit einer Zange oder einem Löffel gründlich vermengen.",
-      "Nach und nach das beiseite gestellte, heiße Nudelkochwasser (1-2 Esslöffel auf einmal) unter ständigem Rühren hinzufügen. Das Ziel ist es, eine seidige Emulsion zu schaffen, bei der sich Käse, Sahne und Wasser zu einer cremigen Sauce verbinden. Dies erfordert Geduld und kontinuierliches Rühren.",
-      "Weiter rühren und eventuell mehr Nudelwasser hinzufügen, bis die Sauce die gewünschte, glänzende und cremige Konsistenz erreicht hat und perfekt an der Pasta haftet.",
-      "Mit einer winzigen Prise Salz abschmecken, falls nötig (Pecorino ist sehr salzig!). Sofort heiß servieren."
-    ]
+      "Cook pasta according to package instructions until al dente. Reserve about 1/2 cup of pasta water before draining.",
+      "While pasta cooks, finely chop the tomatoes and fresh parsley. Grate the zest from half a lemon.",
+      "In a large pan or pot (the one you'll serve from), melt the butter over low-medium heat.",
+      "Add the drained pasta to the pan. Add the lemon zest and chili flakes, if using.",
+      "Pour in about 1/4 cup of the reserved pasta water. Stir vigorously to create a light, emulsified sauce that coats the pasta.",
+      "Add the chopped fresh tomatoes and parsley. Toss gently to combine, allowing the heat to slightly warm the tomatoes without fully cooking them.",
+      "Taste and adjust seasoning. Serve immediately."
+    ],
+    "cookingtime": "18 mins",
+    "cuisine": [
+      "German",
+      "Italian",
+      "No preferences"
+    ],
+    "persons": 2
   }
-];
+]
 
 
 

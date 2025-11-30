@@ -21,6 +21,7 @@
     "@angular/platform-server": "^20.3.14",
     "@angular/router": "^20.3.14",
     "@angular/ssr": "^20.3.12",
+    "bootstrap": "^5.3.8",
     "express": "^4.18.2",
     "lottie-web": "^5.13.0",
     "ngx-lottie": "^11.0.2",

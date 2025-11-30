@@ -22,4 +22,9 @@ export class RecipesComponent {
   navigateToIngredients() {
     this.router.navigate(['./select-ingredients'])
   }
+
+  navigateToSelectedRecipe(i: number) {
+    this.ingredientService.currentRecipe = i;
+    this.router.navigate(['./selected-recipes'])
+  }
 }

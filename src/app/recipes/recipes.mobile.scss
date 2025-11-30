@@ -4,13 +4,32 @@
     .recipes {
         >main {
             padding: 80px 8px 24px 8px;
+
             >.upper-half {
                 grid-template-columns: 1fr;
+                grid-template-areas:
+                    "title"
+                    "image"
+                    "desc";
+
+                >.text {
+                    display: contents;
+
+                    >h1 {
+                        grid-area: title;
+                        font-size: 32px;
+                    }
+
+                    >p {
+                        grid-area: desc;
+                        font-size: 18px;
+                    }
+                }
 
                 >.recipe-image {
+                    grid-area: image;
                     max-width: 520px;
                     width: 100%;
-                    height: 200px;
                     justify-self: center;
                 }
             }
@@ -20,9 +39,15 @@
                 flex-direction: column;
                 align-items: center;
                 margin-top: 64px;
-                >div{
+
+                >div {
                     width: 100%;
                     height: auto;
+
+                    >p {
+                        font-size: 20px;
+                        margin-top: 0;
+                    }
                 }
             }
         }
@@ -32,5 +57,9 @@
         >button {
             margin-top: 64px;
         }
+    }
+
+    h2 {
+        font-size: 24px;
     }
 }

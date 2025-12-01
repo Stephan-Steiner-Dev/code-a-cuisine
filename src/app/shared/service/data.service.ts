@@ -38,7 +38,21 @@ export class DataService {
   } = {
       title: 'The recipe results',
       image: '/assets/images/recipe/recipe-image.png',
-      description: 'We took what you have and let our AI do the thinking. Here are 3 easy recipes you can make right now!'
+      description: 'We took what you have and let our AI do the thinking. Here are 3 easy recipes you can make right now!',
     }
+
+  selectedRecipe: {
+    titleSection: string[]
+    directions: string
+    inspiration: string
+    heartIcon: string
+  } = {
+      titleSection: [
+        'Energie', 'Protein', 'Fat', 'Carbs'
+      ],
+      directions: 'Find inspiration for your next culinary adventure!',
+      inspiration: '<strong>Just finished this Meal?</strong> Give it a heart, so that the others know this is delicious.',
+      heartIcon: 'assets/shared-icons/heart.png'
+      }
 }
 

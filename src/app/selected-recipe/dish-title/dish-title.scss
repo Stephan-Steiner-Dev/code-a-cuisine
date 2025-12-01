@@ -1,0 +1,59 @@
+.title-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #faf0e6;
+    box-sizing: border-box;
+    padding: 16px;
+    border-radius: 16px;
+    margin-bottom: 32px;
+
+    >.title {
+        width: 70%;
+    }
+
+    >.notritional {
+        min-width: 300px;
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+
+        >.preferences {
+            display: flex;
+            flex-direction: row;
+            gap: 8px;
+
+            >p {
+                background-color: #d3d3c3;
+                margin: 0;
+                box-sizing: border-box;
+                padding: 8px;
+                border-radius: 16px;
+            }
+        }
+
+        >.nutri-info {
+            >div {
+                display: flex;
+                flex-direction: row;
+                gap: 8px;
+                justify-content: space-between;
+
+                >div {
+                    display: flex;
+                    flex-direction: column;
+
+                    >p:nth-child(1) {
+                        margin: 0 0 4px 0;
+                        font-weight: bold;
+                    }
+
+                    >p:nth-child(2) {
+                        margin: 0;
+                    }
+                }
+            }
+        }
+    }
+}

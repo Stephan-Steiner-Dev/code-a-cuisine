@@ -1,0 +1,17 @@
+<section>
+    <div class="steps">
+        @for (item of currentRecipe.steps; track $index) {
+
+        <div>
+            <h3>{{ $index ++1 }}. step</h3>
+            {{ item }}
+        </div>
+        }
+    </div>
+    <div class="like-div">
+        <div>
+            <h4 [innerHTML]="dataService.selectedRecipe.inspiration"></h4>
+            <img (click)="like()" [src]="dataService.selectedRecipe.heartIcon" alt="icon">
+        </div>
+    </div>
+</section>

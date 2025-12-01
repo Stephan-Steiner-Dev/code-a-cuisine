@@ -53,10 +53,10 @@ export class IngredientService {
   {
     "title": "Pasta al Pomodoro e Burro (Tomato Butter Pasta)",
     "nutritionalInformations": [
-      "Energy: 1530 kcal",
-      "Protein: 36 g",
-      "Fat: 88 g",
-      "Carbs: 148 g"
+      "1530 kcal",
+      "36 g",
+      "88 g",
+      "148 g"
     ],
     "myIngredients": [
       "200 gram pasta",

@@ -1,0 +1,20 @@
+.steps {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 16px;
+    padding: 32px;
+}
+
+.like-div {
+    >div {
+        height: 130px;
+        border-radius: 16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+        >h4 {
+            
+        }
+    }
+}

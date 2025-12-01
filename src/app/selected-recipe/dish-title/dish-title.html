@@ -1,0 +1,28 @@
+<div class="title-div">
+    <div class="title">
+        <p><img src="assets/images/preferences/clock.png" alt="icon"> Cooking time: {{
+            currentRecipe.cookingtime }}</p>
+        <h1>{{ currentRecipe.title }}</h1>
+        <p>Cooking person: {{ currentRecipe.persons }}</p>
+    </div>
+    <div class="notritional">
+        <div class="preferences">
+            @for (item of currentRecipe.cuisine; track $index) {
+            @if (item !== 'No preferences') {
+            <p>{{ item }}</p>
+            }
+            }
+        </div>
+        <div class="nutri-info">
+            <p>Nutritional Information</p>
+            <div>
+                @for (item of currentRecipe.nutritionalInformations; track $index) {
+                <div>
+                    <p>{{dataService.selectedRecipe.titleSection[$index] }}</p>
+                    <p>{{ item }}</p>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

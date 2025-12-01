@@ -6,6 +6,7 @@ import { PreferencesComponent } from './preferences/preferences.component';
 import { LoadingPageComponent } from './shared/loading-page/loading-page.component';
 import { RecipesComponent } from './recipes/recipes.component';
 import { SelectedRecipeComponent } from './selected-recipe/selected-recipe.component';
+import { Cookbook } from './cookbook/cookbook';
 
 export const routes: Routes = [
     { path: '', component: LandingpageComponent },
@@ -15,6 +16,6 @@ export const routes: Routes = [
     { path: 'preferences', component: PreferencesComponent },
     { path: 'loading-page', component: LoadingPageComponent },
     { path: 'recipes', component: RecipesComponent },
-    { path: 'selected-recipe', component: SelectedRecipeComponent }
-
+    { path: 'selected-recipe', component: SelectedRecipeComponent },
+    { path: 'cookbook', component: Cookbook }
 ];

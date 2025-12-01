@@ -1,47 +1,44 @@
 <section class="selected-recipe">
     <div class="center-div">
-        <button class="back-btn"></button>
+        <button (click)="navigateBack()" class="back-btn"><img src="assets/shared-icons/arrow.png" alt="arrow"> Recipe
+            results</button>
         <main>
-            <div class="title-div">
-                <div class="title">
-                    <p></p>
-                    <h1></h1>
-                    <p></p>
-                </div>
-                <div class="notritional">
-                    <div>
-                        <p></p>
-                    </div>
-                    <p></p>
-                    <div>
-                        <div>for</div>
-                    </div>
-                </div>
-            </div>
+            <app-dish-title></app-dish-title>
             <div class="ingredients-div">
-                <h2><img src="" alt=""><img src="" alt=""></h2>
+                <h2>Ingredients</h2>
                 <section class="ingredient">
                     <div class="your-ingredient">
-                        <li>
-                            <ul>for</ul>
-                        </li>
+                        <h4>Your ingredients</h4>
+                        <ul>
+                            @for (item of currentRecipe.myIngredients; track $index) {
+                            <li>{{ item }}</li>
+                            }
+                        </ul>
                     </div>
                     <div class="extra-ingredient">
-                        <li>
-                            <ul>for</ul>
-                        </li>
+                        <h4>Extra ingredient</h4>
+                        <ul>
+                            @for (item of currentRecipe.extraIngredients; track $index) {
+                            <li>{{ item }}</li>
+                            }
+                        </ul>
                     </div>
                 </section>
             </div>
             <div class="directions-div">
-                <h3><img src="" alt=""><img src="" alt=""></h3>
-                <div>
-                    <div>for</div>
-                </div>
+                <h3>
+                    <p>Directions</p>
+                </h3>
+                <app-directions></app-directions>
             </div>
-            <div class="like-div"></div>
         </main>
-        <div class="cookbook"></div>
-        <button class="new-recipe-btn"></button>
+        <div class="cookbook">
+            <h4>{{ dataService.selectedRecipe.directions }}</h4>
+            <app-button (click)="navigateToCookbock()" text="Cookbook"></app-button>
+        </div>
+        <div class="new-recipe-div">
+            <button (click)="newRecipe()" class="new-recipe-btn">Generate new recipe <img
+                    src="assets/shared-icons/arrow.png" alt="icon"></button>
+        </div>
     </div>
 </section>

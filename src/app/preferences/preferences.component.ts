@@ -7,11 +7,11 @@ import { DataService } from '../shared/service/data.service';
 import { IngredientService } from '../shared/service/ingredient.service';
 
 @Component({
-    standalone: true,
-    selector: 'app-preferences',
-    imports: [CommonModule, FormsModule, ButtonComponent],
-    templateUrl: './preferences.component.html',
-    styleUrls: ['./preferences.component.scss', './preferences.mobile.scss']
+  standalone: true,
+  selector: 'app-preferences',
+  imports: [CommonModule, FormsModule, ButtonComponent],
+  templateUrl: './preferences.component.html',
+  styleUrls: ['./preferences.component.scss', './preferences.mobile.scss']
 })
 
 export class PreferencesComponent {
@@ -31,7 +31,8 @@ export class PreferencesComponent {
     if (!array) return;
     const index = array.indexOf(value);
     if (index === -1) {
-      array.push(value);
+      array.length = 0;
+      array.push(value)
     } else {
       array.splice(index, 1);
     }
@@ -88,7 +89,7 @@ export class PreferencesComponent {
     }
   }
 
-  
+
   back() {
     this.router.navigate(['/select-ingredients'])
   }

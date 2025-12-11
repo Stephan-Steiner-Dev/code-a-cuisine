@@ -25,6 +25,6 @@ export class RecipesComponent {
 
   navigateToSelectedRecipe(i: number) {
     this.ingredientService.currentRecipe = i;
-    this.router.navigate(['./selected-recipes'])
+    this.router.navigate(['./selected-recipe'])
   }
 }

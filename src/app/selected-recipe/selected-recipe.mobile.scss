@@ -1,0 +1,51 @@
+@use '../../styles/breakpoints' as bp;
+
+@media (max-width: bp.$bp-lg) {
+    .selected-recipe {
+        >.center-div {
+            padding: 120px 8px 68px 8px;
+        }
+    }
+
+    .ingredients-div {
+        >h2 {
+            font-size: 24px;
+        }
+    }
+
+    .directions-div {
+        >h3 {
+            font-size: 24px;
+        }
+    }
+}
+
+// @media (max-width: bp.$bp-md) {
+//     .ingredients-div {
+//         height: 100px;
+//     }
+// }
+
+// .directions-div {
+//     >h3 {
+//         >p {
+//             font-size: 24px;
+//             height: 30px;
+//         }
+//     }
+// }
+
+@media (max-width: bp.$bp-sm) {
+    .ingredients-div {
+        >h2 {
+            background-image: url('.././../assets/images/selected-recipe/ingredients-banner-mobile.png');
+        }
+    }
+
+    .directions-div {
+        >h3 {
+            width: 100%;
+            background-image: url('../../assets/images/selected-recipe/directions-banner-mobile.png');
+        }
+    }
+}

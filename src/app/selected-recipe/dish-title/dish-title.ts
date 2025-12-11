@@ -6,7 +6,7 @@ import { IngredientService } from '../../shared/service/ingredient.service';
   selector: 'app-dish-title',
   imports: [],
   templateUrl: './dish-title.html',
-  styleUrl: './dish-title.scss',
+  styleUrls: ['./dish-title.scss', './dish-title.mobile.scss']
 })
 export class DishTitle {
  public dataService = inject(DataService)

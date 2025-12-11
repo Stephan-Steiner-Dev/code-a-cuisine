@@ -52,17 +52,19 @@
 }
 
 .ingredients-div {
+    width: 100%;
+
     >h2 {
         width: 100%;
         height: 112px;
         margin: 0;
-        background-image: url('../../assets/images/selected-recipe/content1.png');
-        background-size: 100% 100%;
         display: flex;
         justify-content: center;
         align-items: center;
         font-size: 32px;
         font-weight: 600;
+        background-image: url('.././../assets/images/selected-recipe/ingredients-banner.png');
+        background-size: 100% 100%;
     }
 
     >.ingredient {
@@ -73,22 +75,19 @@
 }
 
 .directions-div {
+    width: 100%;
+
     >h3 {
-        background-image: url('../../assets/images/selected-recipe/content2.png');
-        background-size: 100% 100%;
         width: 100%;
         height: 112px;
         display: flex;
         justify-content: center;
         align-items: center;
-
+        background-image: url('../../assets/images/selected-recipe/directions-banner.png');
+        background-size: 100% 100%;
         margin: 0;
-
-        >p {
-            font-size: 32px;
-            font-weight: 600;
-            margin: 18px 0 0 0;
-        }
+        font-size: 32px;
+        font-weight: 600;
     }
 }
 
@@ -105,6 +104,7 @@ strong {
     display: flex;
     margin-top: 56px;
     justify-content: flex-end;
+
     .new-recipe-btn {
         border: none;
         background-color: transparent;

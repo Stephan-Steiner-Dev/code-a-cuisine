@@ -12,7 +12,7 @@ import { DishTitle } from './dish-title/dish-title';
   selector: 'app-selected-recipe',
   imports: [CommonModule, Directions, ButtonComponent, DishTitle],
   templateUrl: './selected-recipe.component.html',
-  styleUrl: './selected-recipe.component.scss',
+  styleUrls: ['./selected-recipe.component.scss', './selected-recipe.mobile.scss']
 })
 export class SelectedRecipeComponent {
   public ingredientService= inject(IngredientService)

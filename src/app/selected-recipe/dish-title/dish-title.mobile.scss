@@ -1,0 +1,64 @@
+@use '../../../styles/breakpoints' as bp;
+
+@media (max-width: bp.$bp-lg) {
+    .title-div {
+        >.title {
+            >p {
+                font-size: 16px;
+                font-weight: 500;
+            }
+
+            >h1 {
+                font-size: 24px;
+                font-weight: 600;
+            }
+        }
+
+        >.notritional {
+            >.nutri-info {
+                >div {
+                    >div {
+                        >p:nth-child(1) {
+                            font-size: 16px;
+                            font-weight: 600;
+                        }
+
+                        >p:nth-child(2) {
+                            font-size: 16px;
+                            font-weight: 600;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: bp.$bp-md) {
+    .title-div {
+        flex-direction: column;
+
+        >.title {
+            width: 100%;
+        }
+
+        >.notritional {
+            flex-direction: column-reverse;
+            margin-left: 0;
+
+            >.nutri-info {
+                >div {
+                    justify-content: flex-start;
+                }
+
+                >p {
+                    margin: 0 0 8px 0;
+                }
+            }
+
+            >.preferences {
+                margin-top: 8px;
+            }
+        }
+    }
+}

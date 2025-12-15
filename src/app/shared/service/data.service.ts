@@ -53,6 +53,28 @@ export class DataService {
       directions: 'Find inspiration for your next culinary adventure!',
       inspiration: '<strong>Just finished this Meal?</strong> Give it a heart, so that the others know this is delicious.',
       heartIcon: 'assets/shared-icons/heart.png'
-      }
-}
+    }
 
+  cookbook: {
+    title: string
+    description: string
+    subtitle: string
+    cuisine: string[]
+    images: string[]
+    icons: string[]
+  } = {
+      title: 'Cookbook',
+      description: 'From quick bites to gourmet delights, explore them all in our ultimate cookbook and get inspired for your next culinary adventure.',
+      subtitle: 'Most liked recipes',
+      cuisine: ['Italian', 'German', 'Oriental', 'Japanese', 'Anti-inflammatory', 'Fusion'],
+      images: [
+        '/assets/images/cookbook/italian.png',
+        '/assets/images/cookbook/german.png',
+        '/assets/images/cookbook/oriental.png',
+        '/assets/images/cookbook/japanese.png',
+        '/assets/images/cookbook/anti-inflammatory.jpg',
+        '/assets/images/cookbook/fusion.png'
+      ],
+      icons: ['/assets/shared-icons/heart.png', 'assets/images/preferences/clock.png']
+    }
+}

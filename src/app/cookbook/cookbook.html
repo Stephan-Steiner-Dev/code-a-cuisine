@@ -1,1 +1,27 @@
-<p>cookbook works!</p>
+<main>
+    <div class="max-width">
+        <section class="title">
+            <div>
+                <h1>{{dataService.cookbook.title}}</h1>
+                <p></p>
+            </div>
+            <div>
+                <h2>{{dataService.cookbook.subtitle}} <img [src]="dataService.cookbook.icons[0]" alt=""></h2>
+                <div>
+                    <div>
+                        <h3><img [src]="dataService.cookbook.icons[1]" alt="">Cooking time:</h3>
+                        <p>{{ dataService.cookbook.description }}</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="cuisine">
+            <div *ngFor="let cuisine of dataService.cookbook.cuisine; index as i">
+                <div (click)="getRecipes(cuisine)">
+                    <h4>{{ cuisine }}</h4>
+                    <img [src]="dataService.cookbook.images[i]" [alt]="cuisine">
+                </div>
+            </div>
+        </section>
+    </div>
+</main>

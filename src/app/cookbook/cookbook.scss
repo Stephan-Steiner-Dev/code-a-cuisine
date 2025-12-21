@@ -1,6 +1,7 @@
 main {
     display: flex;
     justify-content: center;
+    flex-direction: column;
     margin-top: 112px;
     box-sizing: border-box;
     padding: 0 68px;
@@ -11,6 +12,82 @@ main {
 
         >.title {
             background-color: #f7f9f7;
+            display: flex;
+            box-sizing: border-box;
+            padding: 8px;
+            border-radius: 16px;
+            margin-bottom: 64px;
+
+            >div:nth-child(1) {
+                width: 420px;
+                margin-right: 16px;
+
+                >p {
+                    font-size: 24px;
+                    font-weight: 500;
+                    margin: 0;
+                }
+            }
+        }
+    }
+
+    >div:nth-child(3) {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+    }
+}
+
+h1 {
+    font-size: 64px;
+    font-weight: 700;
+    margin: 0;
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 42px 0 4px 0;
+    display: flex;
+
+    >img {
+        margin-left: 8px;
+    }
+}
+
+h4 {
+    font-size: 28px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.liked-recipes {
+    >div {
+        background-color: #E4E8E4;
+        box-sizing: border-box;
+        padding: 8px;
+        border-radius: 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        >h3 {
+            display: flex;
+            align-items: center;
+            margin: 0;
+            font-size: 16px;
+            font-weight: 500;
+
+            >img {
+                width: 16px;
+                height: 16px;
+                margin-right: 8px;
+            }
+        }
+
+        >img {
+            width: 16px;
+            height: 16px;
         }
     }
 }
@@ -22,10 +99,31 @@ main {
     gap: 8px;
 
     >div {
-        >img {
-            width: 400px;
-            height: 400px;
-
+        >div {
+            >img {
+                width: 400px;
+                height: 400px;
+                cursor: pointer;
+            }
         }
+    }
+}
+
+.forward-arrow {
+    transform: rotateY(180deg);
+}
+
+button {
+    background-color: transparent;
+    border: none;
+    display: flex;
+    gap: 4px;
+    margin: 24px 0;
+    color: #1e5515;
+    cursor: pointer;
+
+    &:hover {
+        transform: scale(1.05);
+        transition: 0.5s ease-in-out        
     }
 }

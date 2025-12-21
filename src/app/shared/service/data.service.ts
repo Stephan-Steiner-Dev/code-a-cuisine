@@ -75,6 +75,6 @@ export class DataService {
         '/assets/images/cookbook/anti-inflammatory.jpg',
         '/assets/images/cookbook/fusion.png'
       ],
-      icons: ['/assets/shared-icons/heart.png', 'assets/images/preferences/clock.png']
+      icons: ['/assets/shared-icons/heart.png', 'assets/images/preferences/clock.png', 'assets/images/cookbook/favorite.png', 'assets/shared-icons/arrow.png']
     }
 }

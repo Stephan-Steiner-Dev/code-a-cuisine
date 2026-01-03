@@ -1,8 +1,8 @@
 <main>
-    <div>
-        <button (click)="navigate('back')"><img [src]="dataService.cookbook.icons[3]" alt="arrow">Back</button>
-    </div>
     <div class="max-width">
+        <div>
+            <button (click)="navigate('back')"><img [src]="dataService.cookbook.icons[3]" alt="arrow">Back</button>
+        </div>
         <section class="title">
             <div>
                 <h1>{{dataService.cookbook.title}}</h1>
@@ -29,8 +29,9 @@
                 </div>
             </div>
         </section>
-    </div>
-    <div>
-        <button (click)="navigate('./select-ingredients')">Generate new Recipe<img class="forward-arrow" [src]="dataService.cookbook.icons[3]" alt="arrow"></button>
+        <div class="back-btn-div">
+            <button (click)="navigate('./select-ingredients')">Generate new Recipe<img class="forward-arrow"
+                    [src]="dataService.cookbook.icons[3]" alt="arrow"></button>
+        </div>
     </div>
 </main>

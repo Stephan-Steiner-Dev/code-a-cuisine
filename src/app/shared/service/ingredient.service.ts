@@ -26,8 +26,9 @@ export interface Recipe {
   extraIngredients: string[];
   steps: string[];
   cookingtime: string;
-  cuisine: string[];
-  persons: number
+  cuisine: string;
+  persons: number;
+  diet: string
 }
 
 @Injectable({
@@ -78,12 +79,9 @@ export class IngredientService {
       "Stir in grated Parmesan cheese and fresh basil. Serve immediately."
     ],
     "cookingtime": "20 mins",
-    "cuisine": [
-      "German",
-      "Italian",
-      "No preferences"
-    ],
-    "persons": 2
+    "cuisine": "German",
+    "persons": 2,
+    "diet": "No preferences"
   },
   {
     "title": "Buttered Noodles with Roasted Tomatoes and Herbs",
@@ -113,12 +111,9 @@ export class IngredientService {
       "Serve the buttered noodles topped with the roasted tomatoes, toasted breadcrumbs, and fresh chives."
     ],
     "cookingtime": "25 mins",
-    "cuisine": [
-      "German",
-      "Italian",
-      "No preferences"
-    ],
-    "persons": 3
+    "cuisine": "German",
+    "persons": 3,
+    "diet": "No preferences"
   },
   {
     "title": "Lemon Herb Butter Pasta with Fresh Tomatoes",
@@ -148,12 +143,9 @@ export class IngredientService {
       "Taste and adjust seasoning. Serve immediately."
     ],
     "cookingtime": "18 mins",
-    "cuisine": [
-      "German",
-      "Italian",
-      "No preferences"
-    ],
-    "persons": 2
+    "cuisine": "German",
+    "persons": 2,
+    "diet": "No preferences"
   }
 ]
 

@@ -17,7 +17,7 @@ export class Cookbook {
   public dataService = inject(DataService)
   public firebaseDB = inject(FirebaseDbService)
   public cuisine$!: Observable<any | null>
-  private router = inject(Router);
+  private router = inject(Router);  
 
   getRecipes(cuisine: string) {
     this.cuisine$ = this.firebaseDB.getCuisine$(cuisine);
@@ -35,4 +35,10 @@ export class Cookbook {
       this.router.navigate([target]);
     }
   }
+
+
+
+
+
+
 }

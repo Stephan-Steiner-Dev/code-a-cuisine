@@ -16,7 +16,7 @@
                     <h3>Recipe {{i + 1}}</h3>
                 </div>
                 <h2>{{item.title}}</h2>
-                <p>Cooking Time:</p>
+                <p>Cooking Time:  {{item.cookingtime}}</p>
                 <app-button (click)="navigateToSelectedRecipe(i)" class="btn" [text]="'View'" [color]="'#008000'" [backgroundColor]="'#faf0e6'" [hoverColor]="'#ffe397'"></app-button>
             </div>
         </div>

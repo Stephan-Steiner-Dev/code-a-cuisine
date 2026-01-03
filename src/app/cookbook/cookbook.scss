@@ -1,14 +1,15 @@
 main {
     display: flex;
-    justify-content: center;
+    align-items: center;
     flex-direction: column;
     margin-top: 112px;
     box-sizing: border-box;
-    padding: 0 68px;
     color: #1e5515;
 
     >.max-width {
         max-width: 1440px;
+        padding: 0 68px;
+        box-sizing: border-box;
 
         >.title {
             background-color: #f7f9f7;
@@ -30,13 +31,13 @@ main {
             }
         }
     }
+}
 
-    >div:nth-child(3) {
+.back-btn-div {
         width: 100%;
         display: flex;
         justify-content: flex-end;
     }
-}
 
 h1 {
     font-size: 64px;
@@ -118,7 +119,7 @@ button {
     border: none;
     display: flex;
     gap: 4px;
-    margin: 24px 0;
+    margin: 48px 0;
     color: #1e5515;
     cursor: pointer;
 

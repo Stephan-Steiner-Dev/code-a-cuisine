@@ -61,10 +61,13 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: 32px;
-        font-weight: 600;
         background-image: url('.././../assets/images/selected-recipe/ingredients-banner.png');
         background-size: 100% 100%;
+
+        >p {
+            font-size: 32px;
+            font-weight: 600;
+        }
     }
 
     >.ingredient {
@@ -79,15 +82,19 @@
 
     >h3 {
         width: 100%;
-        height: 112px;
+        height: 104px;
         display: flex;
         justify-content: center;
         align-items: center;
         background-image: url('../../assets/images/selected-recipe/directions-banner.png');
         background-size: 100% 100%;
         margin: 0;
-        font-size: 32px;
-        font-weight: 600;
+
+        >p {
+            font-size: 32px;
+            font-weight: 600;
+            margin: 16px 0 0 0;
+        }
     }
 }
 

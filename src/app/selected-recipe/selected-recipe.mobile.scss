@@ -4,6 +4,10 @@
     .selected-recipe {
         >.center-div {
             padding: 120px 8px 68px 8px;
+
+            >.cookbook {
+                gap: 0;
+            }
         }
     }
 
@@ -20,32 +24,44 @@
     }
 }
 
-// @media (max-width: bp.$bp-md) {
-//     .ingredients-div {
-//         height: 100px;
-//     }
-// }
-
-// .directions-div {
-//     >h3 {
-//         >p {
-//             font-size: 24px;
-//             height: 30px;
-//         }
-//     }
-// }
-
 @media (max-width: bp.$bp-sm) {
     .ingredients-div {
         >h2 {
             background-image: url('.././../assets/images/selected-recipe/ingredients-banner-mobile.png');
+            height: 90px;
+
+            >p {
+                font-size: 24px;
+            }
+        }
+
+        >.ingredient {
+            justify-content: center;
+            gap: 0;
+            width: 80%;
+            flex-direction: column;
+            align-items: center;
+
+            >.your-ingredient {
+                width: 85%;
+            }
+
+            >.extra-ingredient {
+                width: 85%;
+            }
         }
     }
 
     .directions-div {
         >h3 {
+            height: 90px;
             width: 100%;
             background-image: url('../../assets/images/selected-recipe/directions-banner-mobile.png');
+
+            >p {
+                margin: 0 0 8px 0;
+                font-size: 24px;
+            }
         }
     }
 }

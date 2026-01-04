@@ -1,5 +1,9 @@
 @use '../../../styles/breakpoints' as bp;
 
-@media (max-width: bp.$bp-lg) {
-    
+@media (max-width: bp.$bp-sm) {
+    .steps {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        padding: 10px;
+    }
 }

@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Database, objectVal } from '@angular/fire/database';
+import { Database, objectVal, listVal } from '@angular/fire/database';
 import { ref, query, orderByChild, limitToLast } from 'firebase/database';
-import { listVal } from 'rxfire/database';
-import { combineLatest, map } from 'rxjs';
+import { combineLatest, map, Observable } from 'rxjs';
 
 export interface RecipeLite {
   id: string;        // <- Firebase Key
@@ -13,9 +12,59 @@ export interface RecipeLite {
 
 @Injectable({ providedIn: 'root' })
 export class FirebaseDbService {
-  constructor(private db: Database) {}
+  constructor(private db: Database) { }
 
   getCuisine$(cuisine: string) {
     return objectVal(ref(this.db, `/${cuisine}`));
   }
+
+
+
+
+  getTopRecipeByCuisine$(cuisine: string): Observable<RecipeLite | null> {
+    const cuisineRef = ref(this.db, `/${cuisine}`);
+    const q = query(cuisineRef, orderByChild('likes'), limitToLast(1));
+
+    return listVal<any>(q, { keyField: 'id' }).pipe(
+      map((arr) => {
+        if (!arr || arr.length === 0) return null;
+
+        const r = arr[0];
+        return {
+          id: r.id,
+          title: r.title,
+          likes: Number(r.likes ?? 0),
+          cuisine,
+        } as RecipeLite;
+      })
+    );
+  }
+
+  getTopRecipesAllCuisines$(): Observable<Record<string, RecipeLite | null>> {
+    const cuisines = [
+      'German',
+      'Italian',
+      'Oriental',
+      'Japanese',
+      'Fusion',
+      'Anti-inflammatory',
+    ];
+
+    return combineLatest(
+      cuisines.map(cuisine =>
+        this.getTopRecipeByCuisine$(cuisine).pipe(
+          map(recipe => ({ cuisine, recipe }))
+        )
+      )
+    ).pipe(
+      map(results => {
+        const obj: Record<string, RecipeLite | null> = {};
+        results.forEach(r => {
+          obj[r.cuisine] = r.recipe;
+        });
+        return obj;
+      })
+    );
+  }
+
 }

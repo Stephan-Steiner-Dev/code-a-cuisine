@@ -10,11 +10,11 @@
             </div>
             <div>
                 <h2>{{dataService.cookbook.subtitle}} <img [src]="dataService.cookbook.icons[0]" alt=""></h2>
-                <div class="liked-recipes-container">
-                    <div class="liked-recipes">
-                        <div>
-                            <h3><img [src]="dataService.cookbook.icons[1]" alt="clock">Cooking time:</h3>
-                            <p><img [src]="dataService.cookbook.icons[2]" alt="like-icon">22</p>
+                <div *ngIf="topByCuisine$ | async as top" class="liked-recipes-container">
+                    <div *ngFor="let cuisine of ['German','Italian','Oriental','Japanese','Fusion','Anti-inflammatory']" class="liked-recipes">
+                        <div *ngIf="top[cuisine] as r">
+                            <h3><img [src]="dataService.cookbook.icons[1]" alt="clock">Cooking time: {{ r.title }}</h3>
+                            <p><img [src]="dataService.cookbook.icons[2]" alt="like-icon">{{ r.likes }}</p>
                         </div>
                         <p></p>
                     </div>

@@ -4,6 +4,7 @@ import { DataService } from '../shared/service/data.service';
 import { FirebaseDbService } from '../shared/service/firebase-db';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { RecipeLite } from '../shared/service/firebase-db';
 
 @Component({
   selector: 'app-cookbook',
@@ -17,7 +18,9 @@ export class Cookbook {
   public dataService = inject(DataService)
   public firebaseDB = inject(FirebaseDbService)
   public cuisine$!: Observable<any | null>
-  private router = inject(Router);  
+  private router = inject(Router);
+  public topRecipe$!: Observable<RecipeLite | null>;
+  public topByCuisine$ = this.firebaseDB.getTopRecipesAllCuisines$();
 
   getRecipes(cuisine: string) {
     this.cuisine$ = this.firebaseDB.getCuisine$(cuisine);
@@ -36,6 +39,17 @@ export class Cookbook {
     }
   }
 
+
+
+
+
+  getTopRecipe(cuisine: string) {
+    this.topRecipe$ = this.firebaseDB.getTopRecipeByCuisine$(cuisine);
+
+    this.topRecipe$.subscribe(r => {
+      console.log('TOP RECIPE:', r);
+    });
+  }
 
 
 

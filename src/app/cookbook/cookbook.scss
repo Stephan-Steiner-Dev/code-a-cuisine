@@ -8,6 +8,7 @@ main {
 
     >.max-width {
         max-width: 1440px;
+        width: 100%;
         padding: 0 68px;
         box-sizing: border-box;
 
@@ -29,15 +30,20 @@ main {
                     margin: 0;
                 }
             }
+
+            >div:nth-child(2) {
+                overflow-x: hidden;
+                margin-left: 16px;
+            }
         }
     }
 }
 
 .back-btn-div {
-        width: 100%;
-        display: flex;
-        justify-content: flex-end;
-    }
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
 
 h1 {
     font-size: 64px;
@@ -53,6 +59,8 @@ h2 {
 
     >img {
         margin-left: 8px;
+        width: 24px;
+        height: 24px;
     }
 }
 
@@ -70,19 +78,42 @@ h4 {
         border-radius: 16px;
         display: flex;
         justify-content: space-between;
-        align-items: center;
+        align-items: flex-start;
+        flex-direction: column;
+        width: 300px;
+        height: 150px;
 
-        >h3 {
+        >div {
             display: flex;
-            align-items: center;
-            margin: 0;
-            font-size: 16px;
-            font-weight: 500;
+            justify-content: space-between;
+            width: 100%;
 
-            >img {
-                width: 16px;
-                height: 16px;
-                margin-right: 8px;
+            >h3 {
+                display: flex;
+                align-items: center;
+                margin: 0;
+                font-size: 16px;
+                font-weight: 500;
+
+                >img {
+                    width: 16px;
+                    height: 16px;
+                    margin-right: 8px;
+                }
+            }
+
+            >p {
+                background-color: #B0C0B0;
+                border-radius: 16px;
+                width: 50px;
+                height: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                >img {
+                    margin-right: 2px;
+                }
             }
         }
 
@@ -90,6 +121,21 @@ h4 {
             width: 16px;
             height: 16px;
         }
+
+        >p {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 500;
+            min-height: 61px;
+        }
+    }
+}
+
+.liked-recipes-container {
+    >div {
+        display: flex;
+        overflow-x: scroll;
+        gap: 8px;
     }
 }
 
@@ -125,6 +171,6 @@ button {
 
     &:hover {
         transform: scale(1.05);
-        transition: 0.5s ease-in-out        
+        transition: 0.5s ease-in-out
     }
 }

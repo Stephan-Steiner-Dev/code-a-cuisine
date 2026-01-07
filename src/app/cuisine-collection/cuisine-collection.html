@@ -1,0 +1,22 @@
+<section>
+    @for (r of recipes; track r.id) {
+    <article class="recipe-card">
+        <h2>{{ r.title ?? 'Ohne Titel' }}</h2>
+
+        <p>
+            <strong>Küche:</strong> {{ r.cuisine }}
+            @if (r.cookingtime) { <span> · <strong>Zeit:</strong> {{ r.cookingtime }}</span> }
+            @if (r.likes !== undefined) { <span> · <strong>Likes:</strong> {{ r.likes }}</span> }
+        </p>
+
+        @if (r.steps.length) {
+        <h3>Steps</h3>
+        <ol>
+            @for (s of r.steps; track $index) {
+            <li>{{ s }}</li>
+            }
+        </ol>
+        }
+    </article>
+    }
+</section>

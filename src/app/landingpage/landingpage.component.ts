@@ -14,4 +14,8 @@ export class LandingpageComponent {
   getStarted() {
     this.router.navigate(['/select-ingredients']);
   }
+
+  navigateToCookbook(){
+    this.router.navigate(['/cookbook']);
+  }
 }

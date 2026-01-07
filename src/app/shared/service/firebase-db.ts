@@ -7,19 +7,48 @@ export interface RecipeLite {
   id: string;        // <- Firebase Key
   title?: string;
   likes?: number;
+  cookingtime?: string;
   cuisine: string;
+}
+
+export interface Recipe {
+  id: string;        // <- Firebase Key
+  title?: string;
+  likes?: number;
+  cookingtime?: string;
+  cuisine: string;
+  diet: string;
+  extraIngredients: string[];
+  myIngredients: string[];
+  nutrutionalInformations: string[];
+  persons: number;
+  steps: string[];
 }
 
 @Injectable({ providedIn: 'root' })
 export class FirebaseDbService {
   constructor(private db: Database) { }
 
-  getCuisine$(cuisine: string) {
-    return objectVal(ref(this.db, `/${cuisine}`));
-  }
+  public currentCuisineRecipes: Recipe[] = [];
 
 
 
+getCuisine$(cuisine: string): Observable<Recipe[]> {
+  const cuisineRef = ref(this.db, `/${cuisine}`);
+
+  return listVal<Recipe>(cuisineRef, { keyField: 'id' }).pipe(
+    map(arr => arr ?? [])
+  );
+}
+
+
+
+
+
+
+  // getCuisine$(cuisine: string): Observable<Recipe | null> {
+  //   return objectVal<Recipe>(ref(this.db, `/${cuisine}`));
+  // }
 
   getTopRecipeByCuisine$(cuisine: string): Observable<RecipeLite | null> {
     const cuisineRef = ref(this.db, `/${cuisine}`);
@@ -34,6 +63,7 @@ export class FirebaseDbService {
           id: r.id,
           title: r.title,
           likes: Number(r.likes ?? 0),
+          cookingtime: r.cookingtime,
           cuisine,
         } as RecipeLite;
       })

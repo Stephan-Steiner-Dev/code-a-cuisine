@@ -24,6 +24,7 @@ export class Cookbook {
   public topByCuisine$ = this.firebaseDB.getTopRecipesAllCuisines$();
 
   getRecipes(cuisine: string) {
+    this.firebaseDB.currentCuisine = cuisine
     this.firebaseDB.getCuisine$(cuisine)
       .pipe(take(1))
       .subscribe((recipes: Recipe[]) => {

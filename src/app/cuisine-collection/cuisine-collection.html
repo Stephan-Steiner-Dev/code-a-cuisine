@@ -1,22 +1,26 @@
 <section>
-    @for (r of recipes; track r.id) {
-    <article class="recipe-card">
-        <h2>{{ r.title ?? 'Ohne Titel' }}</h2>
+    <div>
 
-        <p>
-            <strong>Küche:</strong> {{ r.cuisine }}
-            @if (r.cookingtime) { <span> · <strong>Zeit:</strong> {{ r.cookingtime }}</span> }
-            @if (r.likes !== undefined) { <span> · <strong>Likes:</strong> {{ r.likes }}</span> }
-        </p>
+        <img [src]="dataService.cookbookCollection.images[firebaseDB.currentCuisine]" alt="">
 
-        @if (r.steps.length) {
-        <h3>Steps</h3>
-        <ol>
-            @for (s of r.steps; track $index) {
-            <li>{{ s }}</li>
-            }
-        </ol>
+        @for (r of recipes; track r.id; let i = $index) {
+        <article>
+            <div>
+                <div>
+                    <p> {{ i + 1 }}.</p></div>
+                <div>
+                    <div>
+                        <img src="assets/images/preferences/clock.png" alt="">
+                        <p>Cooking time: {{ r.cookingtime }}</p>
+                    </div>
+                    <p>{{ r.title }}</p>
+                </div>
+            </div>
+            <div>
+                <p>{{ r.diet }}</p>
+                <p><img class="heart-icon" src="assets/shared-icons/heart.png" alt="">{{ r.likes }}</p>
+            </div>
+        </article>
         }
-    </article>
-    }
+    </div>
 </section>

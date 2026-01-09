@@ -77,4 +77,26 @@ export class DataService {
       ],
       icons: ['/assets/shared-icons/heart.png', 'assets/images/preferences/clock.png', 'assets/images/cookbook/favorite.png', 'assets/shared-icons/arrow.png']
     }
+
+  cookbookCollection: {
+    images: Record<string, string>;
+    imagesMobile: Record<string, string>;
+  } = {
+      images: {
+        'Anti-inflammatory': '/assets/images/cuisine-collection/anti-inflammatory.png',
+        Italian: '/assets/images/cuisine-collection/italian.png',
+        German: '/assets/images/cuisine-collection/german.png',
+        Fusion: '/assets/images/cuisine-collection/fusion.png',
+        Japanese: '/assets/images/cuisine-collection/japanese.png',
+        Oriental: '/assets/images/cuisine-collection/oriental.png',
+      },
+      imagesMobile: {
+        'Anti-inflammatory': '/assets/images/cuisine-collection/anti-inflammatory-mobile.png',
+        Italian: '/assets/images/cuisine-collection/italian-mobile.png',
+        German: '/assets/images/cuisine-collection/german-mobile.png',
+        Fusion: '/assets/images/cuisine-collection/fusion-mobile.png',
+        Japanese: '/assets/images/cuisine-collection/japanese-mobile.png',
+        Oriental: '/assets/images/cuisine-collection/oriental-mobile.png',
+      },
+    };
 }

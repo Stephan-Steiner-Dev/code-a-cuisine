@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FirebaseDbService, Recipe } from '../shared/service/firebase-db';
 import { CommonModule } from '@angular/common';
+import { DataService } from '../shared/service/data.service';
 
 
 @Component({
@@ -11,6 +12,7 @@ import { CommonModule } from '@angular/common';
 })
 export class CuisineCollection {
   public firebaseDB = inject(FirebaseDbService)
+  public dataService = inject(DataService)
 
   recipes: Recipe[] = [];
 

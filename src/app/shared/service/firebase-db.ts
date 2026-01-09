@@ -30,7 +30,7 @@ export class FirebaseDbService {
   constructor(private db: Database) { }
 
   public currentCuisineRecipes: Recipe[] = [];
-
+  public currentCuisine: string = '';
 
 
 getCuisine$(cuisine: string): Observable<Recipe[]> {
@@ -43,12 +43,6 @@ getCuisine$(cuisine: string): Observable<Recipe[]> {
 
 
 
-
-
-
-  // getCuisine$(cuisine: string): Observable<Recipe | null> {
-  //   return objectVal<Recipe>(ref(this.db, `/${cuisine}`));
-  // }
 
   getTopRecipeByCuisine$(cuisine: string): Observable<RecipeLite | null> {
     const cuisineRef = ref(this.db, `/${cuisine}`);

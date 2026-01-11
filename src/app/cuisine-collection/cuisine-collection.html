@@ -1,13 +1,21 @@
 <section>
     <div>
-
-        <img [src]="dataService.cookbookCollection.images[firebaseDB.currentCuisine]" alt="">
+        <div>
+            <button (click)="navigate('/cookbook')" class="back-btn"><img src="assets/shared-icons/arrow.png" alt="">Cookbook</button>
+            <app-button (click)="navigate('/select-ingredients')" text="Generate a Recipe"></app-button>
+        </div>
+        <h1 class="cuisine-card"
+            [style.--bg-desktop]="'url(' + (dataService.cookbookCollection.images[recipes[0].cuisine]) + ')'"
+            [style.--bg-mobile]="'url(' + (dataService.cookbookCollection.imagesMobile[recipes[0].cuisine]) + ')'">
+            {{ recipes[0].cuisine }}
+        </h1>
 
         @for (r of recipes; track r.id; let i = $index) {
         <article>
             <div>
                 <div>
-                    <p> {{ i + 1 }}.</p></div>
+                    <p> {{ i + 1 }}.</p>
+                </div>
                 <div>
                     <div>
                         <img src="assets/images/preferences/clock.png" alt="">

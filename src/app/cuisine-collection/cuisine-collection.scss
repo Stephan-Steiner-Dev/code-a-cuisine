@@ -1,15 +1,35 @@
 section {
     margin-top: 112px;
     display: flex;
-    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 
     >div {
         max-width: 1440px;
-        padding: 0 168px;
+        width: 100%;
+        padding: 0 160px;
         box-sizing: border-box;
 
-        >img {
+        >div {
             width: 100%;
+            display: flex;
+            justify-content: space-between;
+            margin: 40px 0;
+
+            >button {
+                display: flex;
+                height: 32px;
+                align-items: center;
+                background-color: transparent;
+                border: none;
+                color:#1e5515;
+
+                >img {
+                    margin-right: 16px;
+                    width: 20px;
+                    height: 12px;
+                }
+            }
         }
 
         >article {
@@ -20,8 +40,14 @@ section {
             box-sizing: border-box;
             padding: 0 80px;
             margin-top: 16px;
+            border-radius: 24px;
+            cursor: pointer;
 
-            >div {
+            &:hover {
+                background-color: #faf0e6;
+            }
+
+            >div:nth-child(1) {
                 display: flex;
 
                 >div:nth-child(1) {
@@ -37,6 +63,8 @@ section {
                         display: flex;
                         align-items: center;
                         justify-content: center;
+                        font-size: 18px;
+                        font-weight: 500;
                     }
                 }
 
@@ -50,6 +78,16 @@ section {
                             height: 12px;
                             margin-right: 8px;
                         }
+
+                        >p {
+                            font-size: 16px;
+                            font-weight: 500;
+                        }
+                    }
+
+                    >p {
+                        font-size: 24px;
+                        font-weight: 500;
                     }
                 }
             }
@@ -58,6 +96,13 @@ section {
                 display: flex;
                 align-items: center;
                 gap: 16px;
+
+                >p {
+                    background-color: #d7dfd7;
+                    box-sizing: border-box;
+                    padding: 8px;
+                    border-radius: 24px;
+                }
             }
         }
     }
@@ -72,4 +117,32 @@ p {
     height: 16px;
     width: 16px;
     margin-right: 4px;
+}
+
+
+.cuisine-card {
+    background-image: var(--bg-desktop);
+        background-repeat: no-repeat;
+        background-size:100% 100%;
+    background-position: center;
+    box-sizing: border-box;
+    padding: 0 80px;
+    border-radius: 12px;
+}
+
+h1 {
+    max-width: 1440px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    margin: 0;
+    color: #1e5515;
+}
+
+@media (max-width: 400px) {
+    .cuisine-card {
+        background-image: var(--bg-mobile);
+    }
 }

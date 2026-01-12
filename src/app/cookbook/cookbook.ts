@@ -10,7 +10,7 @@ import { RecipeLite } from '../shared/service/firebase-db';
   selector: 'app-cookbook',
   imports: [CommonModule],
   templateUrl: './cookbook.html',
-  styleUrl: './cookbook.scss',
+  styleUrls: ['./cookbook.scss', './cookbook.mobile.scss']
 })
 
 export class Cookbook {
@@ -29,7 +29,7 @@ export class Cookbook {
       .pipe(take(1))
       .subscribe((recipes: Recipe[]) => {
         this.firebaseDB.currentCuisineRecipes = recipes; // ✅ Snapshot speichern
-        this.router.navigate(['/cookbook-collection']);  // ✅ dann navigieren
+        this.router.navigate(['/cuisine-collection']);  // ✅ dann navigieren
       });
   }
 

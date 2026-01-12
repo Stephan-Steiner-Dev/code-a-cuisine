@@ -12,7 +12,7 @@ import { HeaderComponent } from './shared/header/header.component';
 })
 export class AppComponent {
   title = 'code-a-cuisine';
-  whiteBgRoutes = ['/select-ingredients', '/preferences', '/selected-recipe', '/cookbook', '/cookbook-collection'];
+  whiteBgRoutes = ['/select-ingredients', '/preferences', '/selected-recipe', '/cookbook', '/cuisine-collection'];
   private router = inject(Router)
 
   isWhiteBgRoute(): boolean {

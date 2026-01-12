@@ -17,9 +17,6 @@ export interface Preferences {
 }
 
 export interface Recipe {
-  // title: string;
-  // ingredients: string[];
-  // steps: string[];
   title: string;
   nutritionalInformations: string[];
   myIngredients: string[];
@@ -44,11 +41,6 @@ export class IngredientService {
   public ingredientList: Ingredient[] = [];
   public preferenceList: Preferences[] = [];
   public currentRecipe: number = 0;
-
-
-
-
-
 
   public recipes: Recipe[] = [
   {

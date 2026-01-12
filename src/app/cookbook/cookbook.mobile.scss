@@ -1,0 +1,80 @@
+@use '../../styles/breakpoints' as bp;
+
+@media (max-width: bp.$bp-lg) {
+    main {
+        >.max-width {
+            padding: 0 8px;
+
+            >.title {
+                flex-direction: column;
+
+                >div:nth-child(1) {
+                    width: 100%;
+                }
+
+                >div:nth-child(2) {
+                    margin-left: 0;
+                }
+            }
+        }
+    }
+
+    .cuisine {
+        justify-content: center;
+    }
+}
+
+@media (max-width: bp.$bp-md) {
+    h1 {
+        font-size: 40px;
+    }
+
+    main {
+        >.max-width {
+            >.title {
+                >div:nth-child(1) {
+                    p {
+                        font-size: 18px;
+                    }
+                }
+            }
+        }
+    }
+
+    .liked-recipes {
+        >div {
+            height: 130px;
+
+            >p {
+                font-size: 18px;
+            }
+        }
+    }
+}
+
+@media (max-width: bp.$bp-xs) {
+    .cuisine{
+        >div {
+            >div {
+                >img {
+                    width: 320px;
+                    height: 260px;
+                }
+            }
+        }
+    }
+
+    main {
+        margin-top: 64px;
+
+        >.max-width {
+            >.title {
+                margin-bottom: 32px;
+            }
+        }
+    }
+
+    button{
+        margin: 32px 0 24px 0;
+    }
+}

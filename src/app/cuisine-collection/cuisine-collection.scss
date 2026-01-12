@@ -22,7 +22,7 @@ section {
                 align-items: center;
                 background-color: transparent;
                 border: none;
-                color:#1e5515;
+                color: #1e5515;
 
                 >img {
                     margin-right: 16px;
@@ -42,10 +42,6 @@ section {
             margin-top: 16px;
             border-radius: 24px;
             cursor: pointer;
-
-            &:hover {
-                background-color: #faf0e6;
-            }
 
             >div:nth-child(1) {
                 display: flex;
@@ -122,8 +118,8 @@ p {
 
 .cuisine-card {
     background-image: var(--bg-desktop);
-        background-repeat: no-repeat;
-        background-size:100% 100%;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
     background-position: center;
     box-sizing: border-box;
     padding: 0 80px;
@@ -139,10 +135,22 @@ h1 {
     height: 100px;
     margin: 0;
     color: #1e5515;
+    font-weight: 600;
+    font-size: 40px;
 }
 
-@media (max-width: 400px) {
-    .cuisine-card {
-        background-image: var(--bg-mobile);
+.even-article {
+    background-color: transparent;
+
+    &:hover {
+        background-color: #faf0e6;
+    }
+}
+
+.odd-article {
+    background-color: transparent;
+
+    &:hover {
+        background-color: #faf0e6;
     }
 }

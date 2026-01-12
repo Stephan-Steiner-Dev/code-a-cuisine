@@ -1,0 +1,82 @@
+@use '../../styles/breakpoints' as bp;
+
+@media (max-width: bp.$bp-lg) {
+    section {
+        >div {
+            padding: 0 8px;
+        }
+
+
+    }
+}
+
+@media (max-width: bp.$bp-sm) {
+    .cuisine-card {
+        background-image: var(--bg-mobile);
+    }
+
+    .generate-btn {
+        position: absolute;
+        bottom: 24px;
+        right: 8px;
+    }
+
+    h1 {
+        font-size: 18px;
+    }
+
+    section {
+        >div {
+            >article {
+                >div:nth-child(1) {
+                    >div:nth-child(2) {
+                        >p {
+                            font-size: 18px;
+                        }
+                    }
+                }
+            }
+
+            >div {
+                margin: 0;
+            }
+        }
+    }
+}
+
+@media (max-width: bp.$bp-md) {
+    section {
+        >div {
+            >article {
+                padding: 0 8px;
+                flex-direction: column;
+
+                >div:nth-child(1) {
+                    >div:nth-child(1) {
+                        align-items: flex-start;
+                    }
+                }
+
+                >div:nth-child(2) {
+                    margin: 4px 0 4px 32px;
+                }
+            }
+        }
+    }
+
+    .even-article {
+        background-color: #faf0e6;
+
+        >&:hover {
+            background-color: #faf0e6;
+        }
+    }
+
+    .odd-article {
+        background-color: transparent;
+
+        >&:hover {
+            background-color: transparent;
+        }
+    }
+}

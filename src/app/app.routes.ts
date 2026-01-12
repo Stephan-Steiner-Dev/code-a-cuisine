@@ -19,5 +19,5 @@ export const routes: Routes = [
     { path: 'recipes', component: RecipesComponent },
     { path: 'selected-recipe', component: SelectedRecipeComponent },
     { path: 'cookbook', component: Cookbook },
-    { path: 'cookbook-collection', component: CuisineCollection }
+    { path: 'cuisine-collection', component: CuisineCollection }
 ];

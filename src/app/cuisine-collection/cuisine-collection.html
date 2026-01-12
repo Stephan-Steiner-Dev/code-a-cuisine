@@ -2,7 +2,7 @@
     <div>
         <div>
             <button (click)="navigate('/cookbook')" class="back-btn"><img src="assets/shared-icons/arrow.png" alt="">Cookbook</button>
-            <app-button (click)="navigate('/select-ingredients')" text="Generate a Recipe"></app-button>
+            <app-button class="generate-btn" (click)="navigate('/select-ingredients')" text="Generate a Recipe"></app-button>
         </div>
         <h1 class="cuisine-card"
             [style.--bg-desktop]="'url(' + (dataService.cookbookCollection.images[recipes[0].cuisine]) + ')'"
@@ -11,7 +11,8 @@
         </h1>
 
         @for (r of recipes; track r.id; let i = $index) {
-        <article>
+        <article (click)="navigateToRecipe(r)"
+        [ngClass]="{ 'even-article': i % 2 === 0, 'odd-article': i % 2 !== 0 }">
             <div>
                 <div>
                     <p> {{ i + 1 }}.</p>

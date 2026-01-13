@@ -1,6 +1,6 @@
 <section class="selected-recipe">
     <div class="center-div">
-        <button (click)="navigateBack()" class="back-btn"><img src="assets/shared-icons/arrow.png" alt="arrow"> Recipe
+        <button (click)="navigate('./recipes')" class="back-btn"><img src="assets/shared-icons/arrow.png" alt="arrow"> Recipe
             results</button>
         <main>
             <app-dish-title></app-dish-title>
@@ -32,10 +32,10 @@
         </main>
         <div class="cookbook">
             <h4>{{ dataService.selectedRecipe.directions }}</h4>
-            <app-button (click)="navigateToCookbock()" text="Cookbook"></app-button>
+            <app-button (click)="navigate('./cookbook')" text="Cookbook"></app-button>
         </div>
         <div class="new-recipe-div">
-            <button (click)="newRecipe()" class="new-recipe-btn">Generate new recipe <img
+            <button (click)="navigate('./select-ingredients')" class="new-recipe-btn">Generate new recipe <img
                     src="assets/shared-icons/arrow.png" alt="icon"></button>
         </div>
     </div>

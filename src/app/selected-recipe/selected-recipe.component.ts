@@ -20,15 +20,7 @@ export class SelectedRecipeComponent {
   public currentRecipe = this.ingredientService.recipes[this.ingredientService.currentRecipe]
   private router = inject(Router)
 
-navigateBack(){
-  this.router.navigate(['./recipes'])
-}
-
-newRecipe() {
-  this.router.navigate(['./select-ingredients'])
-}
-
-navigateToCookbock(){
-  this.router.navigate(['./cookbook'])
+navigate(target: string){
+  this.router.navigate([target])
 }
 }

@@ -67,7 +67,7 @@
     .even-article {
         background-color: #faf0e6;
 
-        >&:hover {
+        &:hover {
             background-color: #faf0e6;
         }
     }
@@ -75,8 +75,8 @@
     .odd-article {
         background-color: transparent;
 
-        >&:hover {
-            background-color: transparent;
+        &:hover {
+            background-color: transparent !important;
         }
     }
 }

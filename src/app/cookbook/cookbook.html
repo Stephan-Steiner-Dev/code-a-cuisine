@@ -14,7 +14,7 @@
                     <div>
                         <div *ngFor="let cuisine of ['German','Italian','Oriental','Japanese','Fusion','Anti-inflammatory']"
                             class="liked-recipes">
-                            <div *ngIf="top[cuisine] as r">
+                            <div *ngIf="top[cuisine] as r" (click)="showRecipe(r.id, r.cuisine)">
                                 <div>
                                     <h3><img [src]="dataService.cookbook.icons[1]" alt="clock">Cooking time: {{
                                         r.cookingtime }}</h3>

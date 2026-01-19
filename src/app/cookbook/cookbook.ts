@@ -49,4 +49,8 @@ export class Cookbook {
       console.log('TOP RECIPE:', r);
     });
   }
+
+  showRecipe(id: string, cuisine: string) {
+    console.log(id, cuisine)
+  }
 }

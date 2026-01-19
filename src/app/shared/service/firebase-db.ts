@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Database, objectVal, listVal } from '@angular/fire/database';
+import { Database, listVal } from '@angular/fire/database';
 import { ref, query, orderByChild, limitToLast } from 'firebase/database';
 import { combineLatest, map, Observable } from 'rxjs';
 
@@ -20,7 +20,7 @@ export interface Recipe {
   diet: string;
   extraIngredients: string[];
   myIngredients: string[];
-  nutrutionalInformations: string[];
+  nutritionalInformations: string[];
   persons: number;
   steps: string[];
 }
@@ -32,17 +32,13 @@ export class FirebaseDbService {
   public currentCuisineRecipes: Recipe[] = [];
   public currentCuisine: string = '';
 
+  getCuisine$(cuisine: string): Observable<Recipe[]> {
+    const cuisineRef = ref(this.db, `/${cuisine}`);
 
-getCuisine$(cuisine: string): Observable<Recipe[]> {
-  const cuisineRef = ref(this.db, `/${cuisine}`);
-
-  return listVal<Recipe>(cuisineRef, { keyField: 'id' }).pipe(
-    map(arr => arr ?? [])
-  );
-}
-
-
-
+    return listVal<Recipe>(cuisineRef, { keyField: 'id' }).pipe(
+      map(arr => arr ?? [])
+    );
+  }
 
   getTopRecipeByCuisine$(cuisine: string): Observable<RecipeLite | null> {
     const cuisineRef = ref(this.db, `/${cuisine}`);
@@ -65,14 +61,7 @@ getCuisine$(cuisine: string): Observable<Recipe[]> {
   }
 
   getTopRecipesAllCuisines$(): Observable<Record<string, RecipeLite | null>> {
-    const cuisines = [
-      'German',
-      'Italian',
-      'Oriental',
-      'Japanese',
-      'Fusion',
-      'Anti-inflammatory',
-    ];
+    const cuisines = ['German', 'Italian', 'Oriental', 'Japanese', 'Fusion', 'Anti-inflammatory'];
 
     return combineLatest(
       cuisines.map(cuisine =>
@@ -91,4 +80,22 @@ getCuisine$(cuisine: string): Observable<Recipe[]> {
     );
   }
 
+
+
+
+
+
+  getWebhookRecipes$(cuisine: string): Observable<Recipe[]> {
+    const cuisineRef = ref(this.db, `/${cuisine}`);
+
+    const q = query(
+      cuisineRef,
+      orderByChild('timestamp'),
+      limitToLast(3)
+    );
+
+    return listVal<Recipe>(q, { keyField: 'id' }).pipe(
+      map(arr => (arr ?? []).reverse()) // neueste zuerst
+    );
+  }
 }

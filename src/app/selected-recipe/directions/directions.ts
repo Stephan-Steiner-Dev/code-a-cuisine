@@ -16,10 +16,18 @@ export class Directions {
   public currentRecipe = this.ingredientService.recipes[this.ingredientService.currentRecipe]
   public firebaseDB = inject(FirebaseDbService)
   public likeService = inject(LikeService)
+  public hasLiked = false;
 
-  like() {
+  ngOnInit() {
+    this.hasLiked = this.likeService.isLiked(this.currentRecipe.id);
+  }
+
+  async like() {
     console.log(this.currentRecipe)
-    // this.likeService.toggleLike(this.currentRecipe.id, this.currentRecipe.likes, this.currentRecipe.cuisine);
+    console.log(this.currentRecipe.likes)
+
+    await this.likeService.toggleLike(this.currentRecipe.id, this.currentRecipe.likes, this.currentRecipe.cuisine);
+    this.hasLiked = this.likeService.isLiked(this.currentRecipe.id);
   }
 }
 

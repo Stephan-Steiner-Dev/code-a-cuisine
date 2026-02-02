@@ -6,7 +6,7 @@ import { combineLatest, map, Observable } from 'rxjs';
 export interface RecipeLite {
   id: string;        // <- Firebase Key
   title?: string;
-  likes?: number;
+  likes: number;
   cookingtime?: string;
   cuisine: string;
 }
@@ -14,7 +14,7 @@ export interface RecipeLite {
 export interface Recipe {
   id: string;        // <- Firebase Key
   title?: string;
-  likes?: number;
+  likes: number;
   cookingtime?: string;
   cuisine: string;
   diet: string;
@@ -79,11 +79,6 @@ export class FirebaseDbService {
       })
     );
   }
-
-
-
-
-
 
   getWebhookRecipes$(cuisine: string): Observable<Recipe[]> {
     const cuisineRef = ref(this.db, `/${cuisine}`);

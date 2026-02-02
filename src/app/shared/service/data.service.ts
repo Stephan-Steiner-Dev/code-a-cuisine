@@ -46,13 +46,16 @@ export class DataService {
     directions: string
     inspiration: string
     heartIcon: string
+    likedHeartIcon: string
   } = {
       titleSection: [
         'Energie', 'Protein', 'Fat', 'Carbs'
       ],
       directions: 'Find inspiration for your next culinary adventure!',
       inspiration: '<strong>Just finished this Meal?</strong> Give it a heart, so that the others know this is delicious.',
-      heartIcon: 'assets/shared-icons/heart.png'
+      heartIcon: 'assets/shared-icons/heart.png',
+      likedHeartIcon: 'assets/shared-icons/liked-heart.png'
+
     }
 
   cookbook: {

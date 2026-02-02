@@ -1,7 +1,6 @@
 <section>
     <div class="steps">
         @for (item of currentRecipe.steps; track $index) {
-
         <div>
             <h3>{{ $index ++1 }}. step</h3>
             {{ item }}
@@ -11,7 +10,8 @@
     <div class="like-div">
         <div>
             <h4 [innerHTML]="dataService.selectedRecipe.inspiration"></h4>
-            <img (click)="like()" [src]="dataService.selectedRecipe.heartIcon" alt="icon">
+            <img [src]="!hasLiked ? dataService.selectedRecipe.heartIcon : dataService.selectedRecipe.likedHeartIcon"
+                (click)="like(); $event.stopPropagation()">
         </div>
     </div>
 </section>

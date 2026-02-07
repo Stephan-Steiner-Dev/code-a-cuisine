@@ -5,6 +5,7 @@ import { FirebaseDbService, Recipe } from '../shared/service/firebase-db';
 import { Observable, take } from 'rxjs';
 import { Router } from '@angular/router';
 import { RecipeLite } from '../shared/service/firebase-db';
+import { IngredientService } from '../shared/service/ingredient.service';
 
 @Component({
   selector: 'app-cookbook',
@@ -22,14 +23,15 @@ export class Cookbook {
   private router = inject(Router);
   public topRecipe$!: Observable<RecipeLite | null>;
   public topByCuisine$ = this.firebaseDB.getTopRecipesAllCuisines$();
+  public ingredientService = inject(IngredientService)
 
   getRecipes(cuisine: string) {
     this.firebaseDB.currentCuisine = cuisine
     this.firebaseDB.getCuisine$(cuisine)
       .pipe(take(1))
       .subscribe((recipes: Recipe[]) => {
-        this.firebaseDB.currentCuisineRecipes = recipes; // ✅ Snapshot speichern
-        this.router.navigate(['/cuisine-collection']);  // ✅ dann navigieren
+        this.firebaseDB.currentCuisineRecipes = recipes;
+        this.router.navigate(['/cuisine-collection']);
       });
   }
 
@@ -44,13 +46,16 @@ export class Cookbook {
 
   getTopRecipe(cuisine: string) {
     this.topRecipe$ = this.firebaseDB.getTopRecipeByCuisine$(cuisine);
-
-    this.topRecipe$.subscribe(r => {
-      console.log('TOP RECIPE:', r);
-    });
   }
 
-  showRecipe(id: string, cuisine: string) {
-    console.log(id, cuisine)
+  async showRecipe(id: string, cuisine: string) {
+    this.firebaseDB.getRecipe$(cuisine, id)
+      .pipe(take(1))
+      .subscribe(recipe => {
+        if (!recipe) return;
+        this.router.navigate(['/selected-recipe']);
+        this.ingredientService.currentRecipe = 0;
+        this.ingredientService.recipes[0] = recipe;
+      });
   }
 }

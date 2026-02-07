@@ -10,7 +10,7 @@
                     <div class="your-ingredient">
                         <h4>Your ingredients</h4>
                         <ul>
-                            @for (item of currentRecipe.myIngredients; track $index) {
+                            @for (item of (currentRecipe?.myIngredients ?? []); track $index) {
                             <li>{{ item }}</li>
                             }
                         </ul>
@@ -18,7 +18,7 @@
                     <div class="extra-ingredient">
                         <h4>Extra ingredient</h4>
                         <ul>
-                            @for (item of currentRecipe.extraIngredients; track $index) {
+                            @for (item of (currentRecipe?.extraIngredients ?? []); track $index) {
                             <li>{{ item }}</li>
                             }
                         </ul>

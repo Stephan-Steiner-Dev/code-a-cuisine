@@ -1,43 +1,65 @@
 <main>
-    <div class="max-width">
-        <div>
-            <button (click)="navigate('back')"><img [src]="dataService.cookbook.icons[3]" alt="arrow">Back</button>
-        </div>
-        <section class="title">
-            <div>
-                <h1>{{dataService.cookbook.title}}</h1>
-                <p>{{ dataService.cookbook.description }}</p>
-            </div>
-            <div>
-                <h2>{{dataService.cookbook.subtitle}} <img [src]="dataService.cookbook.icons[0]" alt=""></h2>
-                <div *ngIf="topByCuisine$ | async as top" class="liked-recipes-container">
-                    <div>
-                        <div *ngFor="let cuisine of ['German','Italian','Oriental','Japanese','Fusion','Anti-inflammatory']"
-                            class="liked-recipes">
-                            <div *ngIf="top[cuisine] as r" (click)="showRecipe(r.id, r.cuisine)">
-                                <div>
-                                    <h3><img [src]="dataService.cookbook.icons[1]" alt="clock">Cooking time: {{
-                                        r.cookingtime }}</h3>
-                                    <p><img [src]="dataService.cookbook.icons[2]" alt="like-icon">{{ r.likes }}</p>
-                                </div>
-                                <p>{{ r.title }}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="cuisine">
-            <div *ngFor="let cuisine of dataService.cookbook.cuisine; index as i">
-                <div (click)="getRecipes(cuisine)">
-                    <h4>{{ cuisine }}</h4>
-                    <img [src]="dataService.cookbook.images[i]" [alt]="cuisine">
-                </div>
-            </div>
-        </section>
-        <div class="back-btn-div">
-            <button (click)="navigate('./select-ingredients')">Generate new Recipe<img class="forward-arrow"
-                    [src]="dataService.cookbook.icons[3]" alt="arrow"></button>
-        </div>
+  <div class="max-width">
+    <div>
+      <button (click)="navigate('back')">
+        <img [src]="dataService.cookbook?.icons?.[3] ?? ''" alt="arrow">
+        Back
+      </button>
     </div>
+
+    <section class="title">
+      <div>
+        <h1>{{ dataService.cookbook?.title ?? '' }}</h1>
+        <p>{{ dataService.cookbook?.description ?? '' }}</p>
+      </div>
+
+      <div>
+        <h2>
+          {{ dataService.cookbook?.subtitle ?? '' }}
+          <img [src]="dataService.cookbook?.icons?.[0] ?? ''" alt="">
+        </h2>
+
+        <div *ngIf="topByCuisine$ | async as top" class="liked-recipes-container">
+          <div>
+            <div
+              *ngFor="let cuisine of ['German','Italian','Oriental','Japanese','Fusion','Anti-inflammatory']"
+              class="liked-recipes"
+            >
+              <div *ngIf="top?.[cuisine] as r" (click)="showRecipe(r.id, r.cuisine)">
+                <div>
+                  <h3>
+                    <img [src]="dataService.cookbook?.icons?.[1] ?? ''" alt="clock">
+                    Cooking time: {{ r?.cookingtime ?? '' }}
+                  </h3>
+
+                  <p>
+                    <img [src]="dataService.cookbook?.icons?.[2] ?? ''" alt="like-icon">
+                    {{ r?.likes ?? 0 }}
+                  </p>
+                </div>
+
+                <p>{{ r?.title ?? '' }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cuisine">
+      <div *ngFor="let cuisine of (dataService.cookbook?.cuisine ?? []); index as i">
+        <div (click)="getRecipes(cuisine)">
+          <h4>{{ cuisine }}</h4>
+          <img [src]="dataService.cookbook?.images?.[i] ?? ''" [alt]="cuisine">
+        </div>
+      </div>
+    </section>
+
+    <div class="back-btn-div">
+      <button (click)="navigate('./select-ingredients')">
+        Generate new Recipe
+        <img class="forward-arrow" [src]="dataService.cookbook?.icons?.[3] ?? ''" alt="arrow">
+      </button>
+    </div>
+  </div>
 </main>

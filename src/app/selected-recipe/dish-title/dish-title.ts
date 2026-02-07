@@ -1,10 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { DataService } from '../../shared/service/data.service';
 import { IngredientService } from '../../shared/service/ingredient.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-dish-title',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './dish-title.html',
   styleUrls: ['./dish-title.scss', './dish-title.mobile.scss']
 })

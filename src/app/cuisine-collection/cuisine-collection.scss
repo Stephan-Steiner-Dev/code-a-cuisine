@@ -9,6 +9,7 @@ section {
         width: 100%;
         padding: 0 160px;
         box-sizing: border-box;
+        margin-bottom: 40px;
 
         >div {
             width: 100%;
@@ -92,6 +93,8 @@ section {
                 display: flex;
                 align-items: center;
                 gap: 16px;
+                min-width: 202px;
+                justify-content: flex-end;
 
                 >p {
                     background-color: #d7dfd7;

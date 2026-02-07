@@ -6,29 +6,32 @@ import { ref, update } from "firebase/database";
 export class LikeService {
   private STORAGE_KEY = "likedRecipes";
 
-  constructor(private db: Database) {}
+  constructor(private db: Database) { }
 
   isLiked(recipeKey: string): boolean {
     return !!this.getLikedMap()[recipeKey];
   }
 
-  async toggleLike(recipeKey: string, currentLikes: number | undefined, cuisine: string): Promise<void> {
+  async toggleLike(recipeKey: string, currentLikes: number | undefined, cuisine: string): Promise<number> {
     const likedMap = this.getLikedMap();
     const cuisinePath = this.normalizePath(cuisine);
-
     const recipeRef = ref(this.db, `${cuisinePath}/${recipeKey}`);
 
     const likesNow = currentLikes ?? 0;
+    let newLikes = likesNow;
 
     if (likedMap[recipeKey]) {
       delete likedMap[recipeKey];
-      await update(recipeRef, { likes: Math.max(likesNow - 1, 0) });
+      newLikes = Math.max(likesNow - 1, 0);
     } else {
       likedMap[recipeKey] = true;
-      await update(recipeRef, { likes: likesNow + 1 });
+      newLikes = likesNow + 1;
     }
 
+    await update(recipeRef, { likes: newLikes });
     this.saveLikedMap(likedMap);
+
+    return newLikes;
   }
 
   private normalizePath(path: string): string {

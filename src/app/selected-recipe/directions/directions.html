@@ -1,17 +1,22 @@
 <section>
-    <div class="steps">
-        @for (item of currentRecipe.steps; track $index) {
-        <div>
-            <h3>{{ $index ++1 }}. step</h3>
-            {{ item }}
-        </div>
-        }
+  <div class="steps" *ngIf="currentRecipe as recipe">
+    <div *ngFor="let item of recipe.steps; let i = index">
+      <h3>{{ i + 1 }}. step</h3>
+      {{ item }}
     </div>
-    <div class="like-div">
-        <div>
-            <h4 [innerHTML]="dataService.selectedRecipe.inspiration"></h4>
-            <img [src]="!hasLiked ? dataService.selectedRecipe.heartIcon : dataService.selectedRecipe.likedHeartIcon"
-                (click)="like(); $event.stopPropagation()">
-        </div>
+  </div>
+
+  <div class="like-div">
+    <div>
+      <h4 [innerHTML]="dataService.selectedRecipe?.inspiration ?? ''"></h4>
+
+      <img
+        [src]="!hasLiked
+          ? dataService.selectedRecipe?.heartIcon
+          : dataService.selectedRecipe?.likedHeartIcon"
+        (click)="like(); $event.stopPropagation()"
+        alt="like"
+      >
     </div>
+  </div>
 </section>

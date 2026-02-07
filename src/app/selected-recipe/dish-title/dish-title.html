@@ -1,25 +1,29 @@
-<div class="title-div">
-    <div class="title">
-        <p><img src="assets/images/preferences/clock.png" alt="icon"> Cooking time: {{
-            currentRecipe.cookingtime }}</p>
-        <h1>{{ currentRecipe.title }}</h1>
-        <p>Cooking person: {{ currentRecipe.persons }}</p>
+<div class="title-div" *ngIf="currentRecipe as r">
+  <div class="title">
+    <p>
+      <img src="assets/images/preferences/clock.png" alt="icon">
+      Cooking time: {{ r.cookingtime ?? '' }}
+    </p>
+
+    <h1>{{ r.title ?? '' }}</h1>
+
+    <p>Cooking person: {{ r.persons ?? 0 }}</p>
+  </div>
+
+  <div class="notritional">
+    <div class="preferences">
+      <p>{{ r.cuisine ?? '' }}</p>
+      <p>{{ r.diet ?? '' }}</p>
     </div>
-    <div class="notritional">
-        <div class="preferences">
-            <p>{{ currentRecipe.cuisine}}</p>
-            <p>{{ currentRecipe.diet }}</p>
+
+    <div class="nutri-info">
+      <p>Nutritional Information</p>
+
+      <div>
+        <div *ngFor="let item of (r.nutritionalInformations ?? [])">
+          <p>{{ item }}</p>
         </div>
-        <div class="nutri-info">
-            <p>Nutritional Information</p>
-            <div>
-                @for (item of currentRecipe.nutritionalInformations; track $index) {
-                <div>
-                    <!-- <p>{{dataService.selectedRecipe.titleSection[$index] }}</p> -->
-                    <p>{{ item }}</p>
-                </div>
-                }
-            </div>
-        </div>
+      </div>
     </div>
+  </div>
 </div>

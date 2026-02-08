@@ -15,6 +15,7 @@ import { IngredientService } from '../shared/service/ingredient.service';
 })
 
 export class PreferencesComponent {
+  Math = Math;
   selectedCookingTimes: string[] = [];
   selectedCuisines: string[] = [];
   selectedDiets: string[] = [];
@@ -73,18 +74,18 @@ export class PreferencesComponent {
 
 
   minus(unit: string) {
-    if (unit === 'portions') {
+    if (unit === 'portions' && this.portions > 1) {
       this.portions--
-    } else if (unit === 'persons') {
+    } else if (unit === 'persons' && this.persons > 1) {
       this.persons--
     }
   }
 
 
   plus(unit: string) {
-    if (unit === 'portions') {
+    if (unit === 'portions' && this.portions < 12) {
       this.portions++
-    } else if (unit === 'persons') {
+    } else if (unit === 'persons' && this.persons < 3) {
       this.persons++
     }
   }

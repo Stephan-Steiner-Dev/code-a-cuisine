@@ -19,18 +19,34 @@ export class Directions {
   public likeService = inject(LikeService)
   public hasLiked = false;
 
-ngOnInit() {
-  const id = this.currentRecipe?.id;
-  if (!id) return;
+  ngOnInit() {
+    const id = this.currentRecipe?.id;
+    if (!id) return;
 
-  this.hasLiked = this.likeService.isLiked(id);
-}
+    this.hasLiked = this.likeService.isLiked(id);
+  }
+
+
+  async onLikeClick(event: MouseEvent) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    try {
+      await this.like();     // async ist hier völlig ok
+    } catch (e) {
+      console.error(e);
+    }
+  }
 
   async like() {
     const newLikes = await this.likeService.toggleLike(this.currentRecipe.id, this.currentRecipe.likes, this.currentRecipe.cuisine);
     this.hasLiked = this.likeService.isLiked(this.currentRecipe.id);
     this.currentRecipe.likes = newLikes;
   }
+
+  ngOnDestroy() {
+  console.log("Directions destroyed (navigation/state change)");
+}
 }
 
 

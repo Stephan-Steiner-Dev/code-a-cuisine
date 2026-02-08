@@ -2,6 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { FirebaseDbService } from './firebase-db';
+import { take } from 'rxjs';
 
 export interface Ingredient {
   ingredient: string;
@@ -81,11 +82,13 @@ export class IngredientService {
           return;
         }
 
-        this.firebaseDB.getWebhookRecipes$(cuisine).subscribe(dbRecipes => {
-          this.recipes = dbRecipes;          // ✅ Zuweisung klappt sichtbar
-          this.resetArray();
-          this.router.navigate(['/recipes']); // ✅ erst jetzt!
-        });
+        this.firebaseDB.getWebhookRecipes$(cuisine)
+          .pipe(take(1))
+          .subscribe(dbRecipes => {
+            this.recipes = dbRecipes;
+            this.resetArray();
+            this.router.navigate(['/recipes']);
+          });
       },
       error: (error) => console.error('Webhook Fehler:', error)
     });

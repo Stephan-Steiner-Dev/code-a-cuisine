@@ -10,13 +10,18 @@
     <div>
       <h4 [innerHTML]="dataService.selectedRecipe?.inspiration ?? ''"></h4>
 
-      <img
+      <!-- <img
         [src]="!hasLiked
           ? dataService.selectedRecipe?.heartIcon
           : dataService.selectedRecipe?.likedHeartIcon"
         (click)="like(); $event.stopPropagation()"
         alt="like"
-      >
+      > -->
+
+
+      <img [src]="!hasLiked ? dataService.selectedRecipe?.heartIcon : dataService.selectedRecipe?.likedHeartIcon"
+        (click)="onLikeClick($event)" alt="like" />
+
     </div>
   </div>
 </section>

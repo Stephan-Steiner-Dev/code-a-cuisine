@@ -19,3 +19,29 @@
         }
     }
 }
+
+h3 {
+    display:flex;
+    align-items: center;
+    >p {
+        margin-left: 8px;
+        width: 80px;
+        text-align: center;
+        border-radius: 16px;
+    }
+}
+
+.chef-1 {
+    background-color: green;
+    color:white;
+}
+
+.chef-2 {
+    background-color: rgb(255, 196, 0);
+    // color:white;
+}
+
+.chef-3 {
+    background-color: rgb(47, 199, 230);
+    color:white;
+}

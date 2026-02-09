@@ -1,6 +1,12 @@
 import { Component, inject } from "@angular/core";
 import { Router } from "@angular/router";
 
+/**
+ * HeaderComponent
+ *
+ * Application header component responsible for top-level navigation actions.
+ * Currently provides navigation back to the landing page.
+ */
 @Component({
     standalone: true,
     selector: 'app-header',
@@ -9,10 +15,14 @@ import { Router } from "@angular/router";
     styleUrls: ['./header.component.scss', './header.mobile.scss']
 })
 export class HeaderComponent {
-    
-    private router = inject(Router)
 
+    /** Angular Router instance used for navigation (injected). */
+    private router = inject(Router);
+
+    /**
+     * Navigates the user to the application's landing page.
+     */
     navigateHome() {
-        this.router.navigate(['/landingpage'])
+        this.router.navigate(['/landingpage']);
     }
 }

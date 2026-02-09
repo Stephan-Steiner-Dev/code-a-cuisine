@@ -71,6 +71,8 @@ h4 {
 }
 
 .liked-recipes {
+    cursor: pointer;
+
     >div {
         background-color: #E4E8E4;
         box-sizing: border-box;

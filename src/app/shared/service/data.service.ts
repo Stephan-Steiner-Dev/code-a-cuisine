@@ -1,7 +1,21 @@
 import { Injectable } from "@angular/core";
 
+/**
+ * PreferenceKey
+ *
+ * Union type defining the supported preference categories used throughout the app.
+ */
 export type PreferenceKey = 'cookingTime' | 'cuisine' | 'dietPreferences';
 
+/**
+ * PreferenceSection
+ *
+ * Describes a preference section shown in the UI.
+ * - `key`: Identifies which preference category the section belongs to
+ * - `headline`: UI headline for the section
+ * - `image`: Path to the icon/image used in the UI
+ * - `target`: Name of the component property that stores the selected values
+ */
 export interface PreferenceSection {
   key: PreferenceKey;
   headline: string;
@@ -9,11 +23,29 @@ export interface PreferenceSection {
   target: string;
 }
 
+/**
+ * DataService
+ *
+ * Central place for static UI text and configuration data used across the application.
+ * This includes:
+ * - Preferences UI metadata and available options
+ * - Recipe results page content
+ * - Selected recipe page text and icons
+ * - Cookbook page content (cuisines, images, icons)
+ * - Cuisine collection header images (desktop and mobile)
+ *
+ * The service is provided in the root injector, making it a singleton across the app.
+ */
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 
+  /**
+   * Configuration and options for the preferences flow.
+   * - `sections` defines the UI sections and maps them to component targets
+   * - `cookingTime`, `cuisine`, and `dietPreferences` define selectable values
+   */
   preferenceData: {
     sections: PreferenceSection[];
     cookingTime: string[];
@@ -30,6 +62,9 @@ export class DataService {
       dietPreferences: ['Vegetarian', 'Vegan', 'Keto', 'No preferences']
     };
 
+  /**
+   * Static content for the recipe results page.
+   */
   recipeResults: {
     title: string,
     image: string,
@@ -41,6 +76,10 @@ export class DataService {
       description: 'We took what you have and let our AI do the thinking. Here are 3 easy recipes you can make right now!',
     }
 
+  /**
+   * Static content and assets for the selected recipe page.
+   * Includes section labels, helper text, and icon paths for like/unlike states.
+   */
   selectedRecipe: {
     titleSection: string[]
     directions: string
@@ -58,6 +97,9 @@ export class DataService {
 
     }
 
+  /**
+   * Static content for the cookbook overview page, including cuisine labels and assets.
+   */
   cookbook: {
     title: string
     description: string
@@ -81,6 +123,10 @@ export class DataService {
       icons: ['/assets/shared-icons/heart.png', 'assets/images/preferences/clock.png', 'assets/images/cookbook/favorite.png', 'assets/shared-icons/arrow.png']
     }
 
+  /**
+   * Image mappings for cuisine collection pages.
+   * Provides separate images for desktop and mobile layouts.
+   */
   cookbookCollection: {
     images: Record<string, string>;
     imagesMobile: Record<string, string>;

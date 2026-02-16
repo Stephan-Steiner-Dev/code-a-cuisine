@@ -177,7 +177,11 @@ export class IngredientService {
       preferences: this.preferenceList
     };
 
-    this.http.post<Recipe[]>(this.webhookUrl, payload).subscribe({
+    this.http.post<Recipe[]>(this.webhookUrl, payload, {
+      headers: {
+        'x-client-ip': '203.0.113.25'
+      }
+    }).subscribe({
       next: (response) => {
         const cuisine = response?.[0]?.cuisine;
         if (!cuisine) {
@@ -195,7 +199,17 @@ export class IngredientService {
             this.router.navigate(['/recipes']);
           });
       },
-      error: (error) => console.error('Webhook Fehler:', error)
+      error: (error) => {
+        const message =
+          error?.error?.message ||
+          'Ein unbekannter Fehler ist aufgetreten.';
+        alert(message);
+        this.recipes = [];
+        this.resetArray();
+        setTimeout(() => {
+          this.router.navigate(['/landingpage']);
+        }, 3000);
+      }
     });
   }
 }

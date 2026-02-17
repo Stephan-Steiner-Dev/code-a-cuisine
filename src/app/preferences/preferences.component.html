@@ -16,7 +16,8 @@
                     <h3>How many portions you need?</h3>
                     <div class="amount-fields">
                         <img (click)="minus('portions')" src="assets/images/preferences/minus.png" alt="-">
-                        <input [(ngModel)]="portions" (ngModelChange)="portions = Math.min(12, Math.max(1, $event))" type="number" id="portions" min="1" max="12">
+                        <input [(ngModel)]="portions" (ngModelChange)="portions = Math.min(12, Math.max(1, $event))"
+                            type="number" id="portions" min="1" max="12">
                         <label *ngIf="portions < 2" for="portions">Portion</label>
                         <label *ngIf="portions >= 2" for="portions">Portions</label>
                         <img (click)="plus('portions')" src="assets/images/preferences/plus.png" alt="+">
@@ -26,7 +27,8 @@
                     <h3>How many are cooking?</h3>
                     <div class="amount-fields">
                         <img (click)="minus('persons')" src="assets/images/preferences/minus.png" alt="-">
-                        <input [(ngModel)]="persons" (ngModelChange)="persons = Math.min(3, Math.max(1, $event))" type="number" id="persons"  min="1" max="3">
+                        <input [(ngModel)]="persons" (ngModelChange)="persons = Math.min(3, Math.max(1, $event))"
+                            type="number" id="persons" min="1" max="3">
                         <label *ngIf="persons < 2" for="persons">Person</label>
                         <label *ngIf="persons >= 2" for="persons">Persons</label>
                         <img (click)="plus('persons')" src="assets/images/preferences/plus.png" alt="+">
@@ -45,7 +47,8 @@
                     </div>
                 </div>
             </section>
-            <app-button class="generate-btn" (click)="submitPreferences()" text="Generate a recipe" color="#d7dfd7"></app-button>
+            <app-button class="generate-btn" (click)="submitPreferences()" text="Generate a recipe"
+                color="#d7dfd7"></app-button>
         </main>
     </div>
 </section>

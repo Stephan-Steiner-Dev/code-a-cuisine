@@ -5,4 +5,20 @@
     <p class="loading-text">
         Generating<span class="dots"></span>
     </p>
+
+    <div *ngIf="ingredientService.errorMessage" class="toast">
+        <div class="toast-content">
+            <div class="toast-title">Limit erreicht</div>
+
+            <div class="toast-msg">
+                {{ ingredientService.errorMessage }}
+            </div>
+
+            <div class="toast-actions">
+                <button class="btn primary" (click)="navigate()">
+                    Zur Startseite
+                </button>
+            </div>
+        </div>
+    </div>
 </div>

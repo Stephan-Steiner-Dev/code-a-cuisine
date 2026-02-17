@@ -49,7 +49,7 @@ export class PreferencesComponent {
   persons: number = 1;
 
   /** Angular router for navigation (injected). */
-  private router = inject(Router);
+  public router = inject(Router);
 
   /** Shared data access layer (injected). */
   public dataService = inject(DataService);

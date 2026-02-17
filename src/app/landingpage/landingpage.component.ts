@@ -11,11 +11,11 @@ import { Router } from '@angular/router';
  * Navigation is handled through Angular's Router.
  */
 @Component({
-    standalone: true,
-    selector: 'app-landingpage',
-    imports: [],
-    templateUrl: './landingpage.component.html',
-    styleUrls: ['./landingpage.component.scss', './landingpage.mobile.scss']
+  standalone: true,
+  selector: 'app-landingpage',
+  imports: [],
+  templateUrl: './landingpage.component.html',
+  styleUrls: ['./landingpage.component.scss', './landingpage.mobile.scss']
 })
 export class LandingpageComponent {
 
@@ -34,7 +34,7 @@ export class LandingpageComponent {
    * Navigates the user to the cookbook page,
    * where recipes can be browsed or accessed.
    */
-  navigateToCookbook(){
+  navigateToCookbook() {
     this.router.navigate(['/cookbook']);
   }
 }

@@ -1,5 +1,8 @@
-import { Component } from "@angular/core";
+import { Component, inject } from "@angular/core";
 import { LottieComponent, AnimationOptions } from "ngx-lottie";
+import { CommonModule } from "@angular/common";
+import { IngredientService } from "../service/ingredient.service";
+import { Router } from "@angular/router";
 
 /**
  * LoadingPageComponent
@@ -10,13 +13,16 @@ import { LottieComponent, AnimationOptions } from "ngx-lottie";
  * Animation behavior is configured via AnimationOptions.
  */
 @Component({
-    standalone: true,
-    selector: 'app-loading-page',
-    imports: [LottieComponent],
-    templateUrl: './loading-page.component.html',
-    styleUrls: ['./loading-page.component.scss', './loading-page.mobile.scss',]
+  standalone: true,
+  selector: 'app-loading-page',
+  imports: [LottieComponent, CommonModule],
+  templateUrl: './loading-page.component.html',
+  styleUrls: ['./loading-page.component.scss', './loading-page.mobile.scss',]
 })
 export class LoadingPageComponent {
+
+  public ingredientService = inject(IngredientService)
+  public router = inject(Router);
 
   /**
    * Configuration for the Lottie animation.
@@ -29,5 +35,9 @@ export class LoadingPageComponent {
     loop: true,
     autoplay: true,
   };
-}
 
+  navigate() {
+    this.router.navigate(['/landingpage'])
+    this.ingredientService.errorMessage = null;
+  }
+}

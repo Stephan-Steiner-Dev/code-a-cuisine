@@ -120,6 +120,8 @@ export class IngredientService {
   /** Recipes loaded for the results page. */
   public recipes: Recipe[] = [];
 
+  errorMessage: string | null = null;
+
   /**
    * Returns the current ingredient list.
    *
@@ -199,17 +201,20 @@ export class IngredientService {
             this.router.navigate(['/recipes']);
           });
       },
-      error: (error) => {
-        const message =
-          error?.error?.message ||
+
+      error: (err) => {
+        const msg =
+          err?.error?.message ||
           'Ein unbekannter Fehler ist aufgetreten.';
-        alert(message);
-        this.recipes = [];
-        this.resetArray();
-        setTimeout(() => {
-          this.router.navigate(['/landingpage']);
-        }, 3000);
+        this.showError(msg);
       }
     });
   }
+
+  showError(message: string) {
+    this.errorMessage = message;
+    this.recipes = [];
+    this.resetArray();
+  }
+
 }

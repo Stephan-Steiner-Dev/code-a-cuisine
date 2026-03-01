@@ -11,10 +11,10 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2.1,
       "position": [
-        -464,
-        -208
+        -2320,
+        336
       ],
-      "id": "ab4c9ddc-4170-4cfe-aba2-581beb51f496",
+      "id": "96b654bb-be02-4cf9-b394-c789b5214467",
       "name": "Webhook",
       "webhookId": "6d7d8bb4-f781-447d-92e4-e92c93896af6"
     },
@@ -27,10 +27,10 @@
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.4,
       "position": [
-        1696,
-        -48
+        -160,
+        496
       ],
-      "id": "65d1d9df-9bf9-4f9b-bb31-5781bed78ee5",
+      "id": "07836905-2349-4e30-8b7c-2ef1ab868844",
       "name": "Respond to Webhook"
     },
     {
@@ -43,10 +43,10 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3,
       "position": [
-        848,
-        -32
+        -1008,
+        512
       ],
-      "id": "bc2c8787-3f14-4278-bfb4-d5b0a5ca9aa4",
+      "id": "8ec6ead8-f734-4be2-b048-1b78d96b8cc7",
       "name": "AI Agent",
       "notesInFlow": false,
       "onError": "continueRegularOutput"
@@ -60,14 +60,14 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
       "position": [
-        832,
-        176
+        -1024,
+        720
       ],
-      "id": "a5737077-ca03-497e-9128-c4f783a35381",
+      "id": "aba642c4-3241-4a18-ab01-1afd53fced3c",
       "name": "Google Gemini Chat Model",
       "credentials": {
         "googlePalmApi": {
-          "id": "un1xQBKUEXXnjX3a",
+          "id": "XJ21zP8p3MpTQ7Nh",
           "name": "Google Gemini(PaLM) Api account"
         }
       }
@@ -134,10 +134,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        1328,
-        -384
+        -528,
+        160
       ],
-      "id": "e5c54615-09c9-4130-a01e-2fb6ca338030",
+      "id": "967d068e-3c98-49ab-b865-6d7a85b35194",
       "name": "post recipes"
     },
     {
@@ -148,10 +148,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        1488,
-        -384
+        -368,
+        160
       ],
-      "id": "83571cfa-f346-4436-8b28-5f681d8bb4fd",
+      "id": "93578770-ea65-4088-86a2-a080c2f42028",
       "name": "cuisine request"
     },
     {
@@ -161,10 +161,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1632,
-        -384
+        -224,
+        160
       ],
-      "id": "31aa4715-63a4-474f-8e16-36293c340eee",
+      "id": "2670a6ad-9d87-4e07-a79c-313023d17d3d",
       "name": "check cuisine amount"
     },
     {
@@ -176,10 +176,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        1856,
-        -544
+        0,
+        0
       ],
-      "id": "66a23376-b09d-4dea-a6af-1638a3d4e162",
+      "id": "99fcf64d-b585-4253-89b4-a20cad154a75",
       "name": "delete recipe 1"
     },
     {
@@ -191,10 +191,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        1856,
-        -384
+        0,
+        160
       ],
-      "id": "98292689-9626-43ee-b31d-14af91973d61",
+      "id": "e0a40715-2df8-47cf-9032-b6d125645d67",
       "name": "delete recipe 2"
     },
     {
@@ -206,10 +206,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        1856,
-        -224
+        0,
+        320
       ],
-      "id": "26a6bf42-a46a-41a6-b3af-a11ba3e2c599",
+      "id": "34d848db-82d8-4b6a-9d35-d20d69325697",
       "name": "delete recipe 3"
     },
     {
@@ -219,10 +219,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1152,
-        -384
+        -704,
+        160
       ],
-      "id": "130675d0-6740-4e9a-88cd-4b4e3dbbb049",
+      "id": "245831aa-ff1c-46a2-8a36-1ee3be0df36b",
       "name": "transformation"
     },
     {
@@ -230,10 +230,10 @@
       "type": "n8n-nodes-base.errorTrigger",
       "typeVersion": 1,
       "position": [
-        1232,
-        304
+        -624,
+        848
       ],
-      "id": "c2f5f00c-f48e-44e7-b08c-4f1f1d112d2d",
+      "id": "35744a02-74ee-4bbb-ab5d-d2c3546732a7",
       "name": "Error Trigger"
     },
     {
@@ -263,10 +263,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        1328,
-        -32
+        -528,
+        512
       ],
-      "id": "1a16f859-dad3-4fdd-8503-0a1ea7c5ce9d",
+      "id": "085b471c-a142-4165-b102-9b5ae1bc749a",
       "name": "If"
     },
     {
@@ -276,10 +276,10 @@
       "type": "n8n-nodes-base.stopAndError",
       "typeVersion": 1,
       "position": [
-        1696,
-        128
+        -160,
+        672
       ],
-      "id": "bead7f60-9167-444c-af43-29f63f954359",
+      "id": "b7132de2-4fde-4759-a630-020f6acc346b",
       "name": "Stop and Error"
     },
     {
@@ -291,46 +291,12 @@
       "type": "n8n-nodes-base.discord",
       "typeVersion": 2,
       "position": [
-        1648,
-        304
+        -208,
+        848
       ],
-      "id": "ce2111ce-2b73-4706-bf36-18f4cbf26312",
+      "id": "a4286d85-5df0-476f-bcae-c0ca359ea457",
       "name": "Send message",
-      "webhookId": "34eb209e-1ec3-4dad-a0f7-e325bf7bdbb3",
-      "credentials": {
-        "discordWebhookApi": {
-          "id": "Ai5sPZ1Q3YuWqNrC",
-          "name": "Discord Webhook account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "amount": "={{ Math.floor(Math.random() * 4) }}\n"
-      },
-      "type": "n8n-nodes-base.wait",
-      "typeVersion": 1.1,
-      "position": [
-        672,
-        -32
-      ],
-      "id": "3b2bfbb3-1221-431e-82f2-a5fbe1314617",
-      "name": "rate limiting 1",
-      "webhookId": "35450a05-3755-45cf-aacc-070b9b28ea51"
-    },
-    {
-      "parameters": {
-        "amount": "={{ Math.floor(Math.random() * 4) }}\n"
-      },
-      "type": "n8n-nodes-base.wait",
-      "typeVersion": 1.1,
-      "position": [
-        1152,
-        -32
-      ],
-      "id": "4ad6b83a-f86b-47ff-9db3-0357337891b4",
-      "name": "rate limiting 2",
-      "webhookId": "35450a05-3755-45cf-aacc-070b9b28ea51"
+      "webhookId": "34eb209e-1ec3-4dad-a0f7-e325bf7bdbb3"
     },
     {
       "parameters": {
@@ -339,31 +305,11 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -288,
-        -208
+        -2144,
+        336
       ],
-      "id": "16b0546b-8ec7-4f91-93d1-55a37c8f0ebe",
+      "id": "2397347a-90cb-4823-adc3-3ccc2866834d",
       "name": "Code in JavaScript"
-    },
-    {
-      "parameters": {
-        "url": "=https://code-a-cuisine-cb416-default-rtdb.europe-west1.firebasedatabase.app/quota/ip/{{$json._quota.dateKey}}/{{$json._quota.ipKey}}/count.json",
-        "options": {
-          "response": {
-            "response": {
-              "responseFormat": "text"
-            }
-          }
-        }
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.3,
-      "position": [
-        -128,
-        -208
-      ],
-      "id": "a9783187-86b7-4e68-a1a4-219d839709b9",
-      "name": "HTTP Request"
     },
     {
       "parameters": {
@@ -372,10 +318,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -464,
-        -16
+        -2320,
+        528
       ],
-      "id": "90d23fa9-06f1-4cbf-adc6-04df60b3f2e2",
+      "id": "d7b1ae65-fe98-4ee1-a900-b1a97f3ef281",
       "name": "quota parse IP count"
     },
     {
@@ -405,10 +351,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        352,
-        -32
+        -1504,
+        512
       ],
-      "id": "1e6cf8b0-6ed0-4589-82b1-4d3a75e06303",
+      "id": "2d151c34-e006-4bd1-86bf-f4894fa4ac66",
       "name": "If1"
     },
     {
@@ -420,44 +366,24 @@
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.4,
       "position": [
-        720,
-        400
+        -1088,
+        912
       ],
-      "id": "9e3447c4-dc1a-4eb9-812f-480bdabfe2e4",
+      "id": "9601210f-6b12-4e82-9f9f-c44ef8061a03",
       "name": "Respond to Webhook1"
     },
     {
       "parameters": {
-        "jsCode": "const item = $input.first().json;\n\nreturn [{\n  json: {\n    error: \"IP_QUOTA_EXCEEDED\",\n    message: \"Tageslimit erreicht: Diese IP-Adresse darf heute nur 3 Rezepte erstellen. Versuche es morgen wieder.\",\n    limit: 3,\n    used: item._quota?.ipCount ?? 3,\n    remaining: 0,\n    date: item._quota?.dateKey\n  }\n}];"
+        "jsCode": "return [{\n  json: {\n    error: \"IP_QUOTA_EXCEEDED\",\n    message: \"Tageslimit erreicht: Diese IP-Adresse darf heute nur 3 Rezepte erstellen. Versuche es morgen wieder.\",\n    limit: 3,\n    used: $('Get IP count').first().json.data,\n    remaining: 0,\n    date: $('Code in JavaScript').first().json._quota.dateKey\n  }\n}];"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        528,
-        224
+        -1328,
+        768
       ],
-      "id": "781b0bf4-3e83-49db-931c-e52d1887cb89",
+      "id": "9900b410-34e1-477c-9f6d-aa3eb1a947ae",
       "name": "create error message"
-    },
-    {
-      "parameters": {
-        "url": "=https://code-a-cuisine-cb416-default-rtdb.europe-west1.firebasedatabase.app/quota/system/{{ $('Code in JavaScript').item.json._quota.dateKey }}/count.json",
-        "options": {
-          "response": {
-            "response": {
-              "responseFormat": "text"
-            }
-          }
-        }
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.3,
-      "position": [
-        -288,
-        -16
-      ],
-      "id": "87738dde-abe2-4f6b-9142-fd233bd7ed4b",
-      "name": "HTTP Request1"
     },
     {
       "parameters": {
@@ -486,23 +412,23 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        48,
-        -16
+        -1808,
+        528
       ],
-      "id": "d1ca55a3-7fcf-4293-bc60-154b7f934c3c",
+      "id": "a0d3022b-1fc8-4a02-9297-9253973a7834",
       "name": "If2"
     },
     {
       "parameters": {
-        "jsCode": "const item = $input.first().json;\n\nreturn [{\n  json: {\n    error: \"IP_QUOTA_EXCEEDED\",\n    message: \"Tageslimit erreicht: Versuche es morgen wieder.\",\n    limit: 12,\n    used: item._quota?.systemCount ?? 12,\n    remaining: 0,\n    date: item._quota?.dateKey\n  }\n}];"
+        "jsCode": "const item = $('Code in JavaScript').first().json;\n\nreturn [{\n  json: {\n    error: \"IP_QUOTA_EXCEEDED\",\n    message: \"Tageslimit erreicht: Versuche es morgen wieder.\",\n    limit: 12,\n    used: item._quota?.systemCount ?? 12,\n    remaining: 0,\n    date: item._quota?.dateKey\n  }\n}];"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        272,
-        272
+        -1584,
+        816
       ],
-      "id": "844df386-ce74-4c5d-aac3-d840505747d5",
+      "id": "4d407f59-d0fc-412c-936b-64e8837e7ec7",
       "name": "Code in JavaScript2"
     },
     {
@@ -514,10 +440,10 @@
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.4,
       "position": [
-        720,
-        560
+        -1136,
+        1104
       ],
-      "id": "ac5696f7-7ae5-4f2b-bf4a-ca4e55c9561a",
+      "id": "68de7245-71c7-4c47-9fb2-d35b50cb3c5c",
       "name": "Respond to Webhook2"
     },
     {
@@ -538,10 +464,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        496,
-        -448
+        -1360,
+        96
       ],
-      "id": "109e54d3-d5b3-4924-a15d-8a1c03a4d326",
+      "id": "36964a33-8c79-419e-9bee-74932a904f3d",
       "name": "HTTP Request2"
     },
     {
@@ -562,10 +488,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        512,
-        -272
+        -1344,
+        272
       ],
-      "id": "43346f7a-46fb-47da-abcd-7cc720fa8eb9",
+      "id": "ec9b52c7-8254-4c06-8b9d-f104d1c30485",
       "name": "HTTP Request3"
     },
     {
@@ -575,11 +501,79 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -128,
-        -16
+        -1984,
+        528
       ],
-      "id": "f06aca9f-9c19-4553-8bb8-9e7fbe19f421",
+      "id": "a1780bf2-6d5a-4b0d-b64c-8df64e20bec0",
       "name": "quota parse SYSTEM count"
+    },
+    {
+      "parameters": {
+        "amount": "={{ Math.floor(Math.random() * 4) }}\n"
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -688,
+        512
+      ],
+      "id": "a4e95791-1222-4d55-b548-698a4b5623f8",
+      "name": "Throttling 2",
+      "webhookId": "35450a05-3755-45cf-aacc-070b9b28ea51"
+    },
+    {
+      "parameters": {
+        "amount": "={{ Math.floor(Math.random() * 4) }}\n"
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -1184,
+        512
+      ],
+      "id": "9015697c-4526-4029-99be-88443d36f346",
+      "name": "Throttling 1",
+      "webhookId": "35450a05-3755-45cf-aacc-070b9b28ea51"
+    },
+    {
+      "parameters": {
+        "url": "=https://code-a-cuisine-cb416-default-rtdb.europe-west1.firebasedatabase.app/quota/ip/{{$json._quota.dateKey}}/{{$json._quota.ipKey}}/count.json",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "text"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        -1984,
+        336
+      ],
+      "id": "fd49974b-7128-4cf7-8681-ec1abde25327",
+      "name": "Get IP count"
+    },
+    {
+      "parameters": {
+        "url": "=https://code-a-cuisine-cb416-default-rtdb.europe-west1.firebasedatabase.app/quota/system/{{ $('Code in JavaScript').item.json._quota.dateKey }}/count.json",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "text"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        -2144,
+        528
+      ],
+      "id": "240833ea-6bb3-4caa-ab41-eb181d08f59f",
+      "name": "Get system count"
     }
   ],
   "pinData": {},
@@ -593,11 +587,6 @@
             "index": 0
           }
         ]
-      ]
-    },
-    "Respond to Webhook": {
-      "main": [
-        []
       ]
     },
     "Google Gemini Chat Model": {
@@ -615,7 +604,7 @@
       "main": [
         [
           {
-            "node": "rate limiting 2",
+            "node": "Throttling 2",
             "type": "main",
             "index": 0
           }
@@ -710,44 +699,11 @@
         ]
       ]
     },
-    "rate limiting 1": {
-      "main": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "rate limiting 2": {
-      "main": [
-        [
-          {
-            "node": "If",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Code in JavaScript": {
       "main": [
         [
           {
-            "node": "HTTP Request",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "HTTP Request": {
-      "main": [
-        [
-          {
-            "node": "quota parse IP count",
+            "node": "Get IP count",
             "type": "main",
             "index": 0
           }
@@ -758,7 +714,7 @@
       "main": [
         [
           {
-            "node": "HTTP Request1",
+            "node": "Get system count",
             "type": "main",
             "index": 0
           }
@@ -769,7 +725,7 @@
       "main": [
         [
           {
-            "node": "rate limiting 1",
+            "node": "Throttling 1",
             "type": "main",
             "index": 0
           },
@@ -793,17 +749,6 @@
         [
           {
             "node": "Respond to Webhook1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "HTTP Request1": {
-      "main": [
-        [
-          {
-            "node": "quota parse SYSTEM count",
             "type": "main",
             "index": 0
           }
@@ -854,17 +799,62 @@
           }
         ]
       ]
+    },
+    "Throttling 2": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Throttling 1": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get IP count": {
+      "main": [
+        [
+          {
+            "node": "quota parse IP count",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get system count": {
+      "main": [
+        [
+          {
+            "node": "quota parse SYSTEM count",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
-  "active": true,
+  "active": false,
   "settings": {
-    "executionOrder": "v1"
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
   },
-  "versionId": "e45d8456-0d08-4fb0-853c-f7229d084737",
+  "versionId": "58c6cfb8-c52d-47c9-81b5-b2a5a8cd4725",
   "meta": {
-    "templateCredsSetupCompleted": true,
-    "instanceId": "e3038a34a40beadae9a210957da62cc0c6b94c818a517e318ddc90c5a6113be2"
+    "instanceId": "25281532505342e63991feea82b78f2368784a4fa9080cae01035078467c9dd9"
   },
-  "id": "sEgUe6imU5GYgPK1",
+  "id": "YLWXzi1eep4SmIdC",
   "tags": []
 }

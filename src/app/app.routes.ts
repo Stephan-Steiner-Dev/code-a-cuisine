@@ -8,6 +8,7 @@ import { RecipesComponent } from './recipes/recipes.component';
 import { SelectedRecipeComponent } from './selected-recipe/selected-recipe.component';
 import { Cookbook } from './cookbook/cookbook';
 import { CuisineCollection } from './cuisine-collection/cuisine-collection';
+import { Imprint } from './shared/imprint/imprint';
 
 /**
  * routes
@@ -66,5 +67,10 @@ export const routes: Routes = [
     /**
      * Collection page for recipes of a specific cuisine.
      */
-    { path: 'cuisine-collection', component: CuisineCollection }
+    { path: 'cuisine-collection', component: CuisineCollection },
+
+    /**
+     * Imprint of the Webpage.
+     */
+    { path: 'imprint', component: Imprint}
 ];

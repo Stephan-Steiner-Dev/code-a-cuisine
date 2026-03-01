@@ -3,6 +3,7 @@ section {
     display: flex;
     justify-content: center;
     height: 100vh;
+    position: relative;
 
     >.landingpage {
         max-width: 1440px;
@@ -95,5 +96,23 @@ section {
                 height: 100%;
             }
         }
+    }
+
+    .system-quota {
+        color: white;
+        font-family: 'quicksand';
+        margin-top: 8px;
+        font-size: 18px;
+    }
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: 'quicksand';
+
+    &:hover {
+        background-color: #4f7f4f;
     }
 }

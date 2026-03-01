@@ -16,11 +16,11 @@
             {{ recipes[0].cuisine }}
         </h1>
 
-        <article *ngFor="let r of (recipes ?? []); let i = index" (click)="navigateToRecipe(r)"
+        <article *ngFor="let r of pagedRecipes; let i = index" (click)="navigateToRecipe(r)"
             [ngClass]="{ 'even-article': i % 2 === 0, 'odd-article': i % 2 !== 0 }">
             <div>
                 <div>
-                    <p>{{ i + 1 }}.</p>
+                    <p>{{ (currentPage - 1) * pageSize + i + 1 }}.</p>
                 </div>
 
                 <div>
@@ -40,5 +40,18 @@
                 </p>
             </div>
         </article>
+        <div class="pagination" *ngIf="recipes?.length && totalPages > 1">
+            <button class="page-btn" (click)="prevPage()" [disabled]="currentPage === 1">
+                back
+            </button>
+
+            <div class="page-info">
+                Seite {{ currentPage }} / {{ totalPages }}
+            </div>
+
+            <button class="page-btn" (click)="nextPage()" [disabled]="currentPage === totalPages">
+                next
+            </button>
+        </div>
     </div>
 </section>

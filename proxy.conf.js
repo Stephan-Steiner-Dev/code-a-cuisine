@@ -1,6 +1,6 @@
 module.exports = {
   '/webhook': {
-    target: 'http://localhost:5678',
+    target: 'https://stephan-steiner-dev.app.n8n.cloud',
     changeOrigin: true,
     secure: false,
   }

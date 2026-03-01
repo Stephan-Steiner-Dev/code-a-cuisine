@@ -103,7 +103,7 @@ export class IngredientService {
   private router = inject(Router);
 
   /** Webhook endpoint used to submit ingredients and preferences. */
-  private webhookUrl = '/webhook-test/ingredient';
+  private webhookUrl = 'https://stephan-steiner-dev.app.n8n.cloud/webhook/ingredient';
 
   /** Current list of ingredients entered by the user. */
   public ingredientList: Ingredient[] = [];

@@ -24,6 +24,7 @@ section {
                 background-color: transparent;
                 border: none;
                 color: #1e5515;
+                cursor: pointer;
 
                 >img {
                     margin-right: 16px;
@@ -125,7 +126,6 @@ p {
     margin-right: 4px;
 }
 
-
 .cuisine-card {
     background-image: var(--bg-desktop);
     background-repeat: no-repeat;
@@ -163,4 +163,30 @@ h1 {
     &:hover {
         background-color: #faf0e6;
     }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.page-btn {
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(0,0,0,0.2);
+  color: white;
+  cursor: pointer;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.page-info {
+  opacity: 0.9;
 }

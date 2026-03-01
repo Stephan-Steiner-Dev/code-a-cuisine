@@ -33,7 +33,8 @@ export class AppComponent {
     '/preferences',
     '/selected-recipe',
     '/cookbook',
-    '/cuisine-collection'
+    '/cuisine-collection',
+    '/imprint'
   ];
 
   /** Angular Router instance used to access the current route (injected). */

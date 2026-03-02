@@ -21,7 +21,7 @@
     {
       "parameters": {
         "respondWith": "json",
-        "responseBody": "={{ $json.output }}",
+        "responseBody": "={{ $json.output.recipes }}",
         "options": {}
       },
       "type": "n8n-nodes-base.respondToWebhook",
@@ -36,7 +36,7 @@
     {
       "parameters": {
         "promptType": "define",
-        "text": "=You are a JSON API.\nRespond only with valid JSON.\nDo not include any explanations, markdown, or code fences.\n\nUse the following user preferences:\n\nCooking time: {{ $('Webhook').item.json.body.preferences[0].cookingTime.join(\", \") }}\nCuisine: {{$('Webhook').item.json.body.preferences[0].cuisine[0]}}\n\nDiet: {{$('Webhook').item.json.body.preferences[0].diet[0]}}\n\nPortions: {{$('Webhook').item.json.body.preferences[0].portions}}\n\nPersons: {{$('Webhook').item.json.body.preferences[0].persons}}\n\nCreate 3 different recipes using the following ingredients (use them in \"myIngredients\"):\n{{$('Webhook').item.json.body.ingredients\n  .map(i => `${i.amount} ${i.selectedUnit} ${i.ingredient}`)\n  .join(\"\\n\")}}\n\nGenerate a random id-number with 6 random numbers in \"id\" \n\nReturn the entire result as one valid JSON array with exactly 3 recipe objects.\nThe JSON array must start with [ and end with ].\n\nEach recipe object must have exactly the following properties:\n\n\"title\": string\n\n\"nutritionalInformations\": array of 4 strings\n\n\"Energy: 1900 kcal\"\n\n\"Protein: 65 g\"\n\n\"Fat: 25 g\"\n\n\"Carbs: 380 g\"\n\n\"myIngredients\": array of strings\n\n\"extraIngredients\": array of max 3 simple ingredient strings\n\n\"steps\": array of max 5 short strings (cooking steps)\n\n\"cookingtime\": string like \"20mins\"\n\n\"cuisine\": one string that contains only:\n\nthe cuisine from {{$('Webhook').item.json.body.preferences[0].cuisine[0]}}\n\n\"diet\": one string that contains only:\n\nthe diet from {{$('Webhook').item.json.body.preferences[0].diet[0]}}\n\n\"persons\": number (use {{$('Webhook').item.json.body.preferences[0].persons}})\n\n\"likes\": number, always 0\n\n\"id\": number\n\nExample of the structure only (do not copy values, just follow the shape):\n\n[\n{\n\"title\": \"string\",\n\"nutritionalInformations\": [\"string\", \"string\", \"string\", \"string\"],\n\"myIngredients\": [\"string\"],\n\"extraIngredients\": [\"string\"],\n\"steps\": [\"string\"],\n\"cookingtime\": \"string\",\n\"cuisine\": \"string\",\n\"diet\": \"string\",\n\"persons\": 2,\n\"likes\": 0,\n\"id\": 0\n},\n{\n\"title\": \"string\",\n\"nutritionalInformations\": [\"string\", \"string\", \"string\", \"string\"],\n\"myIngredients\": [\"string\"],\n\"extraIngredients\": [\"string\"],\n\"steps\": [\"string\"],\n\"cookingtime\": \"string\",\n\"cuisine\": \"string\",\n\"diet\": \"string\",\n\"persons\": 2,\n\"likes\": 0,\n\"id\": 0\n},\n{\n\"title\": \"string\",\n\"nutritionalInformations\": [\"string\", \"string\", \"string\", \"string\"],\n\"myIngredients\": [\"string\"],\n\"extraIngredients\": [\"string\"],\n\"steps\": [\"string\"],\n\"cookingtime\": \"string\",\n\"cuisine\": \"string\",\n\"diet\": \"string\",\n\"persons\": 2,\n\"likes\": 0,\n\"id\": 0\n}\n]\n\nAgain: respond with only the JSON array, nothing else.",
+        "text": "=Create 3 different recipes.\n\nUse the following user preferences:\n\nCooking time: {{ $('Webhook').item.json.body.preferences[0].cookingTime.join(\", \") }}\nCuisine: {{$('Webhook').item.json.body.preferences[0].cuisine[0]}}\nDiet: {{$('Webhook').item.json.body.preferences[0].diet[0]}}\nPersons: {{$('Webhook').item.json.body.preferences[0].persons}}\n\nUse these ingredients EXACTLY as \"myIngredients\".\nKeep the quantity and unit exactly as provided:\n\n{{$('Webhook').item.json.body.ingredients\n  .map(i => `${i.amount} ${i.selectedUnit} ${i.ingredient}`)\n  .join(\"\\n\")}}\n\nReturn ONLY a valid JSON object with exactly one top-level key: \"recipes\".\n\nThe output must be:\n{\n  \"recipes\": [ ... exactly 3 recipe objects ... ]\n}\n\nInside \"recipes\", return exactly 3 recipe objects.\n\nEach recipe object must contain ONLY these keys:\ntitle, nutritionalInformations, myIngredients, extraIngredients, steps, cookingtime, cuisine, diet, persons, likes, id\n\nRules:\n\n- nutritionalInformations must be exactly 4 strings in this order:\n  1) \"Energy: <number> kcal\"\n  2) \"Protein: <number> g\"\n  3) \"Fat: <number> g\"\n  4) \"Carbs: <number> g\"\n\n- myIngredients:\n  MUST be an array of strings.\n  Each string MUST contain quantity + unit + ingredient name.\n  Example: \"200 g potatoes\", \"1 tbsp olive oil\".\n  Use the provided webhook ingredients as the base and do not remove them.\n\n- extraIngredients:\n  MUST be an array of 0 to 3 strings.\n  Each string MUST contain quantity + unit + ingredient name.\n  Example: \"1 tbsp oil\", \"200 ml broth\".\n\n- steps: array of 1 to 5 short cooking instructions.\n\n- cookingtime: string like \"20mins\".\n\n- cuisine must be exactly:\n  \"{{$('Webhook').item.json.body.preferences[0].cuisine[0]}}\"\n\n- diet must be exactly:\n  \"{{$('Webhook').item.json.body.preferences[0].diet[0]}}\"\n\n- persons must be the number:\n  {{$('Webhook').item.json.body.preferences[0].persons}}\n\n- likes must always be 0.\n\n- id must be a 6-digit number (100000-999999).",
         "hasOutputParser": true,
         "options": {}
       },
@@ -161,7 +161,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -224,
+        -208,
         160
       ],
       "id": "2670a6ad-9d87-4e07-a79c-313023d17d3d",
@@ -214,7 +214,7 @@
     },
     {
       "parameters": {
-        "jsCode": "const raw = $input.first().json.output;\nconst recipes = JSON.parse(raw);\n\nreturn recipes.map(recipe => ({\n  json: recipe\n}));"
+        "jsCode": "const recipes = $input.first().json.output.recipes;\n\nreturn recipes.map(recipe => ({\n  json: recipe\n}));"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -235,39 +235,6 @@
       ],
       "id": "35744a02-74ee-4bbb-ab5d-d2c3546732a7",
       "name": "Error Trigger"
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "74fd4ec9-5419-4060-8d51-ae0c74dcc1f8",
-              "leftValue": "={{ $json.output }}",
-              "rightValue": "\"title\"",
-              "operator": {
-                "type": "string",
-                "operation": "contains"
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
-      "position": [
-        -528,
-        512
-      ],
-      "id": "085b471c-a142-4165-b102-9b5ae1bc749a",
-      "name": "If"
     },
     {
       "parameters": {
@@ -300,19 +267,6 @@
     },
     {
       "parameters": {
-        "jsCode": "const item = $input.first().json;\nconst headers = item.headers || {};\n\n// Produktion (Proxy-Header)\nconst xff = headers[\"x-forwarded-for\"];\nconst cfip = headers[\"cf-connecting-ip\"];\nconst xri = headers[\"x-real-ip\"];\n\n// NUR LOCAL TESTING (später entfernen)\nconst xClientIp = headers[\"x-client-ip\"];\n\nlet ipRaw =\n  (cfip && String(cfip).trim()) ||\n  (xri && String(xri).trim()) ||\n  (xff && String(xff).split(\",\")[0].trim()) ||\n  (xClientIp && String(xClientIp).trim()) ||\n  \"\";\n\nif (ipRaw.startsWith(\"::ffff:\")) ipRaw = ipRaw.replace(\"::ffff:\", \"\");\n\n// Firebase-sicherer Key\nconst ipKey = ipRaw.toLowerCase().trim().replaceAll(\".\", \"_\").replaceAll(\":\", \"_\");\n\n// Datum Europe/Berlin -> YYYY-MM-DD\nconst nowBerlin = new Date(\n  new Date().toLocaleString(\"en-US\", { timeZone: \"Europe/Berlin\" })\n);\nconst yyyy = nowBerlin.getFullYear();\nconst mm = String(nowBerlin.getMonth() + 1).padStart(2, \"0\");\nconst dd = String(nowBerlin.getDate()).padStart(2, \"0\");\nconst dateKey = `${yyyy}-${mm}-${dd}`;\n\nreturn [{\n  json: {\n    ...item,\n    _quota: {\n      ip: ipRaw,\n      ipKey,\n      dateKey,\n      original: item, // <--- wichtig\n    }\n  }\n}];"
-      },
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        -2144,
-        336
-      ],
-      "id": "2397347a-90cb-4823-adc3-3ccc2866834d",
-      "name": "Code in JavaScript"
-    },
-    {
-      "parameters": {
         "jsCode": "const item = $input.first().json;\n\n// Firebase REST Antwort steht bei dir in item.data (wie du gesehen hast)\nconst raw = item.data;\n\nlet ipCount = 0;\nif (raw === null || raw === undefined || raw === \"\" || raw === \"null\") {\n  ipCount = 0;\n} else {\n  ipCount = Number(raw) || 0;\n}\n\nreturn [{\n  json: {\n    ...item,\n    _quota: {\n      ...(item._quota || {}),\n      ipCount\n    }\n  }\n}];\n"
       },
       "type": "n8n-nodes-base.code",
@@ -323,39 +277,6 @@
       ],
       "id": "d7b1ae65-fe98-4ee1-a900-b1a97f3ef281",
       "name": "quota parse IP count"
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "e810357f-ff87-4687-99cf-9c7e80397df9",
-              "leftValue": "={{ $('quota parse IP count').item.json._quota.ipCount }}",
-              "rightValue": 3,
-              "operator": {
-                "type": "number",
-                "operation": "lt"
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
-      "position": [
-        -1504,
-        512
-      ],
-      "id": "2d151c34-e006-4bd1-86bf-f4894fa4ac66",
-      "name": "If1"
     },
     {
       "parameters": {
@@ -374,65 +295,6 @@
     },
     {
       "parameters": {
-        "jsCode": "return [{\n  json: {\n    error: \"IP_QUOTA_EXCEEDED\",\n    message: \"Tageslimit erreicht: Diese IP-Adresse darf heute nur 3 Rezepte erstellen. Versuche es morgen wieder.\",\n    limit: 3,\n    used: $('Get IP count').first().json.data,\n    remaining: 0,\n    date: $('Code in JavaScript').first().json._quota.dateKey\n  }\n}];"
-      },
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        -1328,
-        768
-      ],
-      "id": "9900b410-34e1-477c-9f6d-aa3eb1a947ae",
-      "name": "create error message"
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "c197696e-ef70-4ac7-a529-db2a5a55a0bf",
-              "leftValue": "={{$json._quota.systemCount}}",
-              "rightValue": 12,
-              "operator": {
-                "type": "number",
-                "operation": "lt"
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
-      "position": [
-        -1808,
-        528
-      ],
-      "id": "a0d3022b-1fc8-4a02-9297-9253973a7834",
-      "name": "If2"
-    },
-    {
-      "parameters": {
-        "jsCode": "const item = $('Code in JavaScript').first().json;\n\nreturn [{\n  json: {\n    error: \"IP_QUOTA_EXCEEDED\",\n    message: \"Tageslimit erreicht: Versuche es morgen wieder.\",\n    limit: 12,\n    used: item._quota?.systemCount ?? 12,\n    remaining: 0,\n    date: item._quota?.dateKey\n  }\n}];"
-      },
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        -1584,
-        816
-      ],
-      "id": "4d407f59-d0fc-412c-936b-64e8837e7ec7",
-      "name": "Code in JavaScript2"
-    },
-    {
-      "parameters": {
         "options": {
           "responseCode": 429
         }
@@ -445,54 +307,6 @@
       ],
       "id": "68de7245-71c7-4c47-9fb2-d35b50cb3c5c",
       "name": "Respond to Webhook2"
-    },
-    {
-      "parameters": {
-        "method": "PUT",
-        "url": "=https://code-a-cuisine-cb416-default-rtdb.europe-west1.firebasedatabase.app/quota/system/{{ $('Code in JavaScript').item.json._quota.dateKey }}/count.json",
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={{ $('quota parse SYSTEM count').item.json._quota.systemCount +1 }}\n",
-        "options": {
-          "response": {
-            "response": {
-              "responseFormat": "text"
-            }
-          }
-        }
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.3,
-      "position": [
-        -1360,
-        96
-      ],
-      "id": "36964a33-8c79-419e-9bee-74932a904f3d",
-      "name": "HTTP Request2"
-    },
-    {
-      "parameters": {
-        "method": "PUT",
-        "url": "=https://code-a-cuisine-cb416-default-rtdb.europe-west1.firebasedatabase.app/quota/ip/{{ $('Code in JavaScript').item.json._quota.dateKey }}/{{ $('Code in JavaScript').item.json._quota.ipKey }}/count.json\n",
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={{ $('quota parse IP count').item.json._quota.ipCount + 1 }}",
-        "options": {
-          "response": {
-            "response": {
-              "responseFormat": "text"
-            }
-          }
-        }
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.3,
-      "position": [
-        -1344,
-        272
-      ],
-      "id": "ec9b52c7-8254-4c06-8b9d-f104d1c30485",
-      "name": "HTTP Request3"
     },
     {
       "parameters": {
@@ -557,7 +371,7 @@
     },
     {
       "parameters": {
-        "url": "=https://code-a-cuisine-cb416-default-rtdb.europe-west1.firebasedatabase.app/quota/system/{{ $('Code in JavaScript').item.json._quota.dateKey }}/count.json",
+        "url": "=https://code-a-cuisine-cb416-default-rtdb.europe-west1.firebasedatabase.app/quota/system/{{ $('Prepare Daily IP Quota').item.json._quota.dateKey }}/count.json",
         "options": {
           "response": {
             "response": {
@@ -574,6 +388,207 @@
       ],
       "id": "240833ea-6bb3-4caa-ab41-eb181d08f59f",
       "name": "Get system count"
+    },
+    {
+      "parameters": {
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"additionalProperties\": false,\n  \"required\": [\"recipes\"],\n  \"properties\": {\n    \"recipes\": {\n      \"type\": \"array\",\n      \"minItems\": 3,\n      \"maxItems\": 3,\n      \"items\": {\n        \"type\": \"object\",\n        \"additionalProperties\": false,\n        \"required\": [\n          \"title\",\n          \"nutritionalInformations\",\n          \"myIngredients\",\n          \"extraIngredients\",\n          \"steps\",\n          \"cookingtime\",\n          \"cuisine\",\n          \"diet\",\n          \"persons\",\n          \"likes\",\n          \"id\"\n        ],\n        \"properties\": {\n          \"title\": { \"type\": \"string\" },\n          \"nutritionalInformations\": {\n            \"type\": \"array\",\n            \"minItems\": 4,\n            \"maxItems\": 4,\n            \"items\": { \"type\": \"string\" }\n          },\n          \"myIngredients\": {\n            \"type\": \"array\",\n            \"minItems\": 1,\n            \"items\": { \"type\": \"string\" }\n          },\n          \"extraIngredients\": {\n            \"type\": \"array\",\n            \"maxItems\": 3,\n            \"items\": { \"type\": \"string\" }\n          },\n          \"steps\": {\n            \"type\": \"array\",\n            \"minItems\": 1,\n            \"maxItems\": 5,\n            \"items\": { \"type\": \"string\" }\n          },\n          \"cookingtime\": { \"type\": \"string\" },\n          \"cuisine\": { \"type\": \"string\" },\n          \"diet\": { \"type\": \"string\" },\n          \"persons\": { \"type\": \"number\" },\n          \"likes\": { \"type\": \"number\" },\n          \"id\": { \"type\": \"number\" }\n        }\n      }\n    }\n  }\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        -848,
+        720
+      ],
+      "id": "77f93500-9892-4746-b16e-68b1d6de82a0",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "c197696e-ef70-4ac7-a529-db2a5a55a0bf",
+              "leftValue": "={{$json._quota.systemCount}}",
+              "rightValue": 12,
+              "operator": {
+                "type": "number",
+                "operation": "lt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -1808,
+        528
+      ],
+      "id": "a0d3022b-1fc8-4a02-9297-9253973a7834",
+      "name": "Check system count"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "e810357f-ff87-4687-99cf-9c7e80397df9",
+              "leftValue": "={{ $('quota parse IP count').item.json._quota.ipCount }}",
+              "rightValue": 3,
+              "operator": {
+                "type": "number",
+                "operation": "lt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -1504,
+        512
+      ],
+      "id": "2d151c34-e006-4bd1-86bf-f4894fa4ac66",
+      "name": "Check IP count"
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "=https://code-a-cuisine-cb416-default-rtdb.europe-west1.firebasedatabase.app/quota/ip/{{ $('Prepare Daily IP Quota').item.json._quota.dateKey }}/{{ $('Prepare Daily IP Quota').item.json._quota.ipKey }}/count.json\n",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $('quota parse IP count').item.json._quota.ipCount + 1 }}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "text"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        -1344,
+        272
+      ],
+      "id": "ec9b52c7-8254-4c06-8b9d-f104d1c30485",
+      "name": "ID count++"
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "=https://code-a-cuisine-cb416-default-rtdb.europe-west1.firebasedatabase.app/quota/system/{{ $('Prepare Daily IP Quota').item.json._quota.dateKey }}/count.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $('quota parse SYSTEM count').item.json._quota.systemCount +1 }}\n",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "text"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        -1360,
+        96
+      ],
+      "id": "36964a33-8c79-419e-9bee-74932a904f3d",
+      "name": "System count++"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "74fd4ec9-5419-4060-8d51-ae0c74dcc1f8",
+              "leftValue": "={{ $json.output.recipes[0].title }}",
+              "rightValue": "\"title\"",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -528,
+        512
+      ],
+      "id": "085b471c-a142-4165-b102-9b5ae1bc749a",
+      "name": "Output check"
+    },
+    {
+      "parameters": {
+        "jsCode": "const item = $input.first().json;\nconst headers = item.headers || {};\n\n// Produktion (Proxy-Header)\nconst xff = headers[\"x-forwarded-for\"];\nconst cfip = headers[\"cf-connecting-ip\"];\nconst xri = headers[\"x-real-ip\"];\n\n// NUR LOCAL TESTING (später entfernen)\nconst xClientIp = headers[\"x-client-ip\"];\n\nlet ipRaw =\n  (cfip && String(cfip).trim()) ||\n  (xri && String(xri).trim()) ||\n  (xff && String(xff).split(\",\")[0].trim()) ||\n  (xClientIp && String(xClientIp).trim()) ||\n  \"\";\n\nif (ipRaw.startsWith(\"::ffff:\")) ipRaw = ipRaw.replace(\"::ffff:\", \"\");\n\n// Firebase-sicherer Key\nconst ipKey = ipRaw.toLowerCase().trim().replaceAll(\".\", \"_\").replaceAll(\":\", \"_\");\n\n// Datum Europe/Berlin -> YYYY-MM-DD\nconst nowBerlin = new Date(\n  new Date().toLocaleString(\"en-US\", { timeZone: \"Europe/Berlin\" })\n);\nconst yyyy = nowBerlin.getFullYear();\nconst mm = String(nowBerlin.getMonth() + 1).padStart(2, \"0\");\nconst dd = String(nowBerlin.getDate()).padStart(2, \"0\");\nconst dateKey = `${yyyy}-${mm}-${dd}`;\n\nreturn [{\n  json: {\n    ...item,\n    _quota: {\n      ip: ipRaw,\n      ipKey,\n      dateKey,\n      original: item, // <--- wichtig\n    }\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -2144,
+        336
+      ],
+      "id": "2397347a-90cb-4823-adc3-3ccc2866834d",
+      "name": "Prepare Daily IP Quota"
+    },
+    {
+      "parameters": {
+        "jsCode": "return [{\n  json: {\n    error: \"IP_QUOTA_EXCEEDED\",\n    message: \"Tageslimit erreicht: Diese IP-Adresse darf heute nur 3 Rezepte erstellen. Versuche es morgen wieder.\",\n    limit: 3,\n    used: $('Get IP count').first().json.data,\n    remaining: 0,\n    date: $('Prepare Daily IP Quota').first().json._quota.dateKey\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1328,
+        768
+      ],
+      "id": "9900b410-34e1-477c-9f6d-aa3eb1a947ae",
+      "name": "create error message 2"
+    },
+    {
+      "parameters": {
+        "jsCode": "const item = $('Prepare Daily IP Quota').first().json;\n\nreturn [{\n  json: {\n    error: \"IP_QUOTA_EXCEEDED\",\n    message: \"Tageslimit erreicht: Versuche es morgen wieder.\",\n    limit: 12,\n    used: item._quota?.systemCount ?? 12,\n    remaining: 0,\n    date: item._quota?.dateKey\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1584,
+        816
+      ],
+      "id": "4d407f59-d0fc-412c-936b-64e8837e7ec7",
+      "name": "create error message 1"
     }
   ],
   "pinData": {},
@@ -582,7 +597,7 @@
       "main": [
         [
           {
-            "node": "Code in JavaScript",
+            "node": "Prepare Daily IP Quota",
             "type": "main",
             "index": 0
           }
@@ -665,45 +680,11 @@
         ]
       ]
     },
-    "If": {
-      "main": [
-        [
-          {
-            "node": "transformation",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Respond to Webhook",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Stop and Error",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Error Trigger": {
       "main": [
         [
           {
             "node": "Send message",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Code in JavaScript": {
-      "main": [
-        [
-          {
-            "node": "Get IP count",
             "type": "main",
             "index": 0
           }
@@ -721,79 +702,11 @@
         ]
       ]
     },
-    "If1": {
-      "main": [
-        [
-          {
-            "node": "Throttling 1",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "HTTP Request3",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "create error message",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "create error message": {
-      "main": [
-        [
-          {
-            "node": "Respond to Webhook1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "If2": {
-      "main": [
-        [
-          {
-            "node": "If1",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "HTTP Request2",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Code in JavaScript2",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Code in JavaScript2": {
-      "main": [
-        [
-          {
-            "node": "Respond to Webhook2",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "quota parse SYSTEM count": {
       "main": [
         [
           {
-            "node": "If2",
+            "node": "Check system count",
             "type": "main",
             "index": 0
           }
@@ -804,7 +717,7 @@
       "main": [
         [
           {
-            "node": "If",
+            "node": "Output check",
             "type": "main",
             "index": 0
           }
@@ -843,15 +756,128 @@
           }
         ]
       ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check system count": {
+      "main": [
+        [
+          {
+            "node": "Check IP count",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "System count++",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "create error message 1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check IP count": {
+      "main": [
+        [
+          {
+            "node": "Throttling 1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "ID count++",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "create error message 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Output check": {
+      "main": [
+        [
+          {
+            "node": "transformation",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Stop and Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Daily IP Quota": {
+      "main": [
+        [
+          {
+            "node": "Get IP count",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "create error message 2": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "create error message 1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
-  "active": false,
+  "active": true,
   "settings": {
     "executionOrder": "v1",
     "binaryMode": "separate",
     "availableInMCP": false
   },
-  "versionId": "58c6cfb8-c52d-47c9-81b5-b2a5a8cd4725",
+  "versionId": "8d7a89c1-f12a-426f-9093-93fae290a071",
   "meta": {
     "instanceId": "25281532505342e63991feea82b78f2368784a4fa9080cae01035078467c9dd9"
   },

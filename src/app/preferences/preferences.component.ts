@@ -162,4 +162,15 @@ export class PreferencesComponent {
   back() {
     this.router.navigate(['/select-ingredients']);
   }
+
+  /**
+ * Returns true only if all preference groups have a selection.
+ */
+  get isFormValid(): boolean {
+    return (
+      this.selectedCookingTimes.length > 0 &&
+      this.selectedCuisines.length > 0 &&
+      this.selectedDiets.length > 0
+    );
+  }
 }

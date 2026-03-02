@@ -48,7 +48,7 @@
                 </div>
             </section>
             <app-button class="generate-btn" (click)="submitPreferences()" text="Generate a recipe"
-                color="#d7dfd7"></app-button>
+                color="#d7dfd7" [disabled]="!isFormValid"></app-button>
         </main>
     </div>
 </section>
